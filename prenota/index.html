@@ -556,35 +556,107 @@
                         <!-- AEROPORTO -->
 
                         <div
-    class="form-group airport-field"
-    id="airport-group"
+    class="airport-options"
+    id="airport-options"
     style="display: none;"
 >
 
-                            <label for="airport">
-                                Aeroporto
-                            </label>
+    <div class="form-group">
 
-                            <select
-                                id="airport"
-                                name="airport"
-                            >
+        <label>
+            Tipo di trasferimento
+        </label>
 
-                                <option value="">
-                                    Seleziona l'aeroporto
-                                </option>
+        <div class="transfer-type-grid">
 
-                                <option value="brindisi">
-                                    Aeroporto di Brindisi
-                                </option>
+            <div class="transfer-type-option">
 
-                                <option value="bari">
-                                    Aeroporto di Bari
-                                </option>
+                <input
+                    type="radio"
+                    id="to-airport"
+                    name="airport-direction"
+                    value="to-airport"
+                >
 
-                            </select>
+                <label for="to-airport">
+                    Devo raggiungere l'aeroporto
+                </label>
 
-                        </div>
+            </div>
+
+
+            <div class="transfer-type-option">
+
+                <input
+                    type="radio"
+                    id="from-airport"
+                    name="airport-direction"
+                    value="from-airport"
+                >
+
+                <label for="from-airport">
+                    Devo essere prelevato in aeroporto
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="form-group"
+        id="airport-select-group"
+        style="display: none;"
+    >
+
+        <label for="airport">
+            Aeroporto
+        </label>
+
+        <select
+            id="airport"
+            name="airport"
+        >
+
+            <option value="">
+                Seleziona l'aeroporto
+            </option>
+
+            <option value="brindisi">
+                Aeroporto di Brindisi
+            </option>
+
+            <option value="bari">
+                Aeroporto di Bari
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div
+        class="form-group"
+        id="flight-group"
+        style="display: none;"
+    >
+
+        <label for="flight">
+            Numero del volo <span>(facoltativo)</span>
+        </label>
+
+        <input
+            type="text"
+            id="flight"
+            name="flight"
+            placeholder="Es. FR1234"
+        >
+
+    </div>
+
+</div>
 
 
                         <!-- DATI PERSONALI -->
@@ -1010,57 +1082,202 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const params = new URLSearchParams(window.location.search);
 
-    const service = params.get("servizio");
-    const airport = params.get("aeroporto");
-
-    const serviceInputs = document.querySelectorAll(
-        'input[name="service"]'
-    );
-
-    const airportGroup = document.getElementById(
-        "airport-group"
-    );
-
-    const airportSelect = document.getElementById(
-        "airport"
-    );
+    const serviceParam = params.get("servizio");
+    const airportParam = params.get("aeroporto");
 
 
-    function updateAirportVisibility() {
+    const form = document.getElementById("booking-form");
+
+    const serviceInputs =
+        document.querySelectorAll(
+            'input[name="service"]'
+        );
+
+    const airportOptions =
+        document.getElementById("airport-options");
+
+    const directionInputs =
+        document.querySelectorAll(
+            'input[name="airport-direction"]'
+        );
+
+    const airportSelect =
+        document.getElementById("airport");
+
+    const airportSelectGroup =
+        document.getElementById("airport-select-group");
+
+    const flightGroup =
+        document.getElementById("flight-group");
+
+    const flightInput =
+        document.getElementById("flight");
+
+    const departureInput =
+        document.getElementById("departure");
+
+    const destinationInput =
+        document.getElementById("destination");
+
+
+    function getAirportName() {
+
+        const names = {
+
+            brindisi:
+                "Aeroporto di Brindisi",
+
+            bari:
+                "Aeroporto di Bari"
+
+        };
+
+        return names[airportSelect.value] || "";
+
+    }
+
+
+    function updateAirportFields() {
 
         const selectedService =
             document.querySelector(
                 'input[name="service"]:checked'
             );
 
-        const isAirport =
-            selectedService &&
-            selectedService.value === "aeroportuale";
 
+        if (
+            !selectedService ||
+            selectedService.value !== "aeroportuale"
+        ) {
 
-        if (isAirport) {
+            airportOptions.style.display = "none";
 
-            airportGroup.style.display = "flex";
-            airportSelect.required = true;
+            airportSelectGroup.style.display = "none";
 
-        } else {
+            flightGroup.style.display = "none";
 
-            airportGroup.style.display = "none";
             airportSelect.required = false;
+
+            flightInput.required = false;
+
             airportSelect.value = "";
+
+            flightInput.value = "";
+
+            directionInputs.forEach(function (input) {
+                input.checked = false;
+            });
+
+            departureInput.readOnly = false;
+            destinationInput.readOnly = false;
+
+            departureInput.value = "";
+            destinationInput.value = "";
+
+            return;
+        }
+
+
+        airportOptions.style.display = "flex";
+
+
+        const selectedDirection =
+            document.querySelector(
+                'input[name="airport-direction"]:checked'
+            );
+
+
+        if (!selectedDirection) {
+
+            airportSelectGroup.style.display = "none";
+
+            flightGroup.style.display = "none";
+
+            return;
+
+        }
+
+
+        airportSelectGroup.style.display = "flex";
+
+        airportSelect.required = true;
+
+
+        const airportName =
+            getAirportName();
+
+
+        /* DEVO RAGGIUNGERE L'AEROPORTO */
+
+        if (
+            selectedDirection.value === "to-airport"
+        ) {
+
+            flightGroup.style.display = "none";
+
+            flightInput.required = false;
+
+            flightInput.value = "";
+
+
+            departureInput.readOnly = false;
+
+            destinationInput.readOnly = true;
+
+
+            if (airportName) {
+
+                destinationInput.value =
+                    airportName;
+
+            } else {
+
+                destinationInput.value = "";
+
+            }
+
+        }
+
+
+        /* DEVO ESSERE PRELEVATO IN AEROPORTO */
+
+        if (
+            selectedDirection.value === "from-airport"
+        ) {
+
+            flightGroup.style.display = "flex";
+
+            flightInput.required = false;
+
+
+            departureInput.readOnly = true;
+
+            destinationInput.readOnly = false;
+
+
+            if (airportName) {
+
+                departureInput.value =
+                    airportName;
+
+            } else {
+
+                departureInput.value = "";
+
+            }
 
         }
 
     }
 
 
-    /* PRESELEZIONE SERVIZIO */
+    /* PRESELEZIONA SERVIZIO */
 
-    if (service) {
+    if (serviceParam) {
 
         const serviceInput =
             document.querySelector(
-                `input[name="service"][value="${service}"]`
+                `input[name="service"][value="${serviceParam}"]`
             );
 
         if (serviceInput) {
@@ -1070,35 +1287,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* PRESELEZIONE AEROPORTO */
+    /* PRESELEZIONA AEROPORTO */
 
-    if (airport) {
-        airportSelect.value = airport;
+    if (airportParam) {
+
+        airportSelect.value =
+            airportParam;
+
     }
 
-
-    /* STATO INIZIALE */
-
-    updateAirportVisibility();
-
-
-    /* CAMBIO SERVIZIO */
 
     serviceInputs.forEach(function (input) {
 
         input.addEventListener(
             "change",
-            updateAirportVisibility
+            updateAirportFields
         );
 
     });
 
 
+    directionInputs.forEach(function (input) {
+
+        input.addEventListener(
+            "change",
+            updateAirportFields
+        );
+
+    });
+
+
+    airportSelect.addEventListener(
+        "change",
+        updateAirportFields
+    );
+
+
+    /* STATO INIZIALE */
+
+    updateAirportFields();
+
+
     /* INVIO WHATSAPP */
 
-    document
-        .getElementById("booking-form")
-        .addEventListener("submit", function (event) {
+    form.addEventListener(
+        "submit",
+        function (event) {
 
             event.preventDefault();
 
@@ -1109,9 +1343,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 );
 
 
-            if (!selectedService) {
-                return;
-            }
+            const selectedDirection =
+                document.querySelector(
+                    'input[name="airport-direction"]:checked'
+                );
 
 
             const serviceNames = {
@@ -1131,77 +1366,61 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
 
-            const serviceName =
-                serviceNames[selectedService.value];
-
-
-            const name =
-                document.getElementById("name").value.trim();
-
-            const surname =
-                document.getElementById("surname").value.trim();
-
-            const phone =
-                document.getElementById("phone").value.trim();
-
-            const date =
-                document.getElementById("date").value;
-
-            const time =
-                document.getElementById("time").value;
-
-            const departure =
-                document.getElementById("departure").value.trim();
-
-            const destination =
-                document.getElementById("destination").value.trim();
-
-            const passengers =
-                document.getElementById("passengers").value;
-
-            const notes =
-                document.getElementById("notes").value.trim();
-
-
-            let airportName = "";
-
-            if (
-                selectedService.value === "aeroportuale" &&
-                airportSelect.value
-            ) {
-
-                const airportNames = {
-
-                    brindisi:
-                        "Aeroporto di Brindisi",
-
-                    bari:
-                        "Aeroporto di Bari"
-
-                };
-
-                airportName =
-                    airportNames[airportSelect.value];
-
-            }
-
-
             let message =
                 "NUOVA RICHIESTA DI PRENOTAZIONE\n\n";
 
 
             message +=
                 "Servizio: " +
-                serviceName +
+                serviceNames[selectedService.value] +
                 "\n";
 
 
-            if (airportName) {
+            if (
+                selectedService.value ===
+                "aeroportuale"
+            ) {
+
+                const airportName =
+                    getAirportName();
+
+
+                if (selectedDirection) {
+
+                    message +=
+                        "Tipo: " +
+                        (
+                            selectedDirection.value ===
+                            "to-airport"
+
+                            ? "Devo raggiungere l'aeroporto"
+
+                            : "Devo essere prelevato in aeroporto"
+                        ) +
+                        "\n";
+
+                }
+
 
                 message +=
                     "Aeroporto: " +
                     airportName +
                     "\n";
+
+
+                if (
+                    selectedDirection &&
+                    selectedDirection.value ===
+                    "from-airport" &&
+                    flightInput.value.trim()
+                ) {
+
+                    message +=
+                        "Numero volo: " +
+                        flightInput.value.trim() +
+                        "\n";
+
+                }
 
             }
 
@@ -1212,15 +1431,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             message +=
                 "Nome: " +
-                name +
+                document.getElementById("name").value +
                 " " +
-                surname +
+                document.getElementById("surname").value +
                 "\n";
 
 
             message +=
                 "Telefono: " +
-                phone +
+                document.getElementById("phone").value +
                 "\n";
 
 
@@ -1230,32 +1449,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
             message +=
                 "Data: " +
-                date +
+                document.getElementById("date").value +
                 "\n";
 
 
             message +=
                 "Ora: " +
-                time +
+                document.getElementById("time").value +
                 "\n";
 
 
             message +=
                 "Partenza: " +
-                departure +
+                departureInput.value +
                 "\n";
 
 
             message +=
                 "Destinazione: " +
-                destination +
+                destinationInput.value +
                 "\n";
 
 
             message +=
                 "Passeggeri: " +
-                passengers +
+                document.getElementById("passengers").value +
                 "\n";
+
+
+            const notes =
+                document.getElementById("notes").value.trim();
 
 
             if (notes) {
@@ -1268,14 +1491,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            const whatsappNumber =
-                "393200404903";
-
-
             const whatsappURL =
-                "https://wa.me/" +
-                whatsappNumber +
-                "?text=" +
+                "https://wa.me/393200404903?text=" +
                 encodeURIComponent(message);
 
 
@@ -1284,7 +1501,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 "_blank"
             );
 
-        });
+        }
+    );
 
 });
 
