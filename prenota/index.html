@@ -8,14 +8,352 @@
 
     <meta
         name="description"
-        content="Richiedi una prenotazione a Salento Executive NCC per il tuo prossimo trasferimento privato."
+        content="Richiedi il tuo transfer privato con Salento Executive NCC."
     >
 
     <meta name="theme-color" content="#f4efe7">
 
     <link rel="icon" href="../favicon.png">
     <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+
+        /* ================================
+           PRENOTAZIONE
+        ================================= */
+
+        .booking-page {
+            background: #f4efe7;
+            padding: 90px 0 110px;
+        }
+
+        .booking-header {
+            max-width: 760px;
+            margin-bottom: 55px;
+        }
+
+        .booking-header h1 {
+            margin: 0 0 22px;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: .95;
+            letter-spacing: -0.05em;
+            font-weight: 500;
+        }
+
+        .booking-header h1 em {
+            font-family: Georgia, serif;
+            font-weight: 400;
+        }
+
+        .booking-header p {
+            max-width: 620px;
+            margin: 0;
+            color: #716c64;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .booking-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 330px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* FORM */
+
+        .booking-card {
+            background: #fffdf9;
+            border: 1px solid rgba(35, 33, 29, .08);
+            padding: 42px;
+            box-shadow: 0 18px 50px rgba(35, 33, 29, .06);
+        }
+
+        .booking-card-header {
+            padding-bottom: 28px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(35, 33, 29, .09);
+        }
+
+        .booking-card-header h2 {
+            margin: 8px 0 8px;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+        }
+
+        .booking-card-header p {
+            margin: 0;
+            color: #777169;
+            line-height: 1.6;
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .11em;
+            font-weight: 600;
+            color: #4d4943;
+        }
+
+        .form-group label span {
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 400;
+            color: #99928a;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+
+            border: 1px solid rgba(35, 33, 29, .14);
+            background: #faf7f1;
+            color: #24221f;
+
+            border-radius: 0;
+
+            padding: 15px 16px;
+
+            font-family: inherit;
+            font-size: .95rem;
+
+            outline: none;
+
+            transition:
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+        .form-group input,
+        .form-group select {
+            height: 52px;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #24221f;
+            background: #fff;
+        }
+
+        .booking-submit {
+            width: 100%;
+            border: 0;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .form-note {
+            margin: 0;
+            color: #8b857d;
+            font-size: .78rem;
+            line-height: 1.6;
+        }
+
+        /* SERVIZIO */
+
+        .service-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .service-option {
+            position: relative;
+        }
+
+        .service-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .service-option label {
+            min-height: 72px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 12px 14px;
+
+            border: 1px solid rgba(35, 33, 29, .13);
+            background: #faf7f1;
+
+            cursor: pointer;
+
+            font-size: .82rem;
+            line-height: 1.3;
+
+            transition:
+                background .2s ease,
+                border-color .2s ease,
+                color .2s ease;
+        }
+
+        .service-option input:checked + label {
+            background: #24221f;
+            border-color: #24221f;
+            color: #fff;
+        }
+
+        /* AEROPORTO */
+
+        #airport-group {
+            padding: 18px;
+            background: #f4efe7;
+            border: 1px solid rgba(35, 33, 29, .08);
+        }
+
+        /* INFO SIDE */
+
+        .booking-side {
+            background: #24221f;
+            color: #fff;
+
+            padding: 35px;
+
+            position: sticky;
+            top: 25px;
+        }
+
+        .booking-side .eyebrow {
+            color: rgba(255,255,255,.55);
+        }
+
+        .booking-side h2 {
+            margin: 12px 0 28px;
+            font-size: 2rem;
+            line-height: 1.05;
+            font-weight: 400;
+            letter-spacing: -.03em;
+        }
+
+        .booking-side p {
+            color: rgba(255,255,255,.65);
+            line-height: 1.7;
+            font-size: .92rem;
+        }
+
+        .booking-steps {
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .booking-step {
+            display: grid;
+            grid-template-columns: 38px 1fr;
+            gap: 14px;
+
+            padding: 18px 0;
+
+            border-top: 1px solid rgba(255,255,255,.12);
+        }
+
+        .booking-step-number {
+            font-size: .72rem;
+            color: rgba(255,255,255,.45);
+            letter-spacing: .08em;
+        }
+
+        .booking-step strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: .9rem;
+            font-weight: 500;
+        }
+
+        .booking-step span {
+            color: rgba(255,255,255,.55);
+            font-size: .8rem;
+            line-height: 1.5;
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 900px) {
+
+            .booking-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-side {
+                position: static;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .booking-page {
+                padding: 60px 0 75px;
+            }
+
+            .booking-header {
+                margin-bottom: 35px;
+            }
+
+            .booking-header h1 {
+                font-size: 3rem;
+            }
+
+            .booking-card {
+                padding: 25px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .service-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .booking-side {
+                padding: 28px 24px;
+            }
+
+        }
+
+        @media (max-width: 420px) {
+
+            .service-selector {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
@@ -37,21 +375,13 @@
 
         <nav class="navigation">
 
-            <a href="../servizi/">
-                Servizi
-            </a>
+            <a href="../servizi/">Servizi</a>
 
-            <a href="../trasferimenti/">
-                Trasferimenti
-            </a>
+            <a href="../trasferimenti/">Trasferimenti</a>
 
-            <a href="../chi-siamo/">
-                Chi siamo
-            </a>
+            <a href="../chi-siamo/">Chi siamo</a>
 
-            <a href="../contatti/">
-                Contatti
-            </a>
+            <a href="../contatti/">Contatti</a>
 
             <a
                 href="../prenota/"
@@ -80,13 +410,13 @@
 
 <main>
 
-    <!-- HERO -->
+    <section class="booking-page">
 
-    <section class="hero">
+        <div class="container">
 
-        <div class="container hero-content">
+            <!-- INTRO -->
 
-            <div class="hero-text">
+            <div class="booking-header">
 
                 <p class="eyebrow">
                     PRENOTAZIONE
@@ -94,416 +424,483 @@
 
                 <h1>
                     Il tuo viaggio,
-                    <em>inizia qui.</em>
+                    <em>al tuo ritmo.</em>
                 </h1>
 
-                <p class="hero-description">
-                    Compila il modulo con i dettagli del tuo
-                    trasferimento. Ti ricontatteremo per
-                    confermare la disponibilità e organizzare
-                    il servizio.
+                <p>
+                    Raccontaci dove vuoi andare, quando vuoi
+                    partire e di cosa hai bisogno. Organizzeremo
+                    il tuo trasferimento in modo semplice,
+                    privato e professionale.
                 </p>
 
             </div>
 
 
-            <div class="hero-visual">
+            <!-- CONTENUTO -->
 
-                <div class="hero-frame">
+            <div class="booking-layout">
 
-                    <div class="hero-frame-content">
 
-                        <span class="hero-label">
-                            PRIVATE DRIVER
-                        </span>
+                <!-- FORM -->
 
-                        <div class="hero-line"></div>
+                <div class="booking-card">
+
+                    <div class="booking-card-header">
+
+                        <p class="eyebrow">
+                            RICHIEDI IL TUO TRANSFER
+                        </p>
 
                         <h2>
-                            Prenota
+                            Dettagli del viaggio
                         </h2>
 
                         <p>
-                            semplice · privato · su misura
+                            Compila i campi qui sotto.
                         </p>
 
                     </div>
 
+
+                    <form
+                        class="booking-form"
+                        id="booking-form"
+                    >
+
+
+                        <!-- SERVIZIO -->
+
+                        <div class="form-group">
+
+                            <label>
+                                Servizio
+                            </label>
+
+                            <div class="service-selector">
+
+
+                                <div class="service-option">
+
+                                    <input
+                                        type="radio"
+                                        id="service-airport"
+                                        name="service"
+                                        value="aeroportuale"
+                                        required
+                                    >
+
+                                    <label for="service-airport">
+                                        Transfer
+                                        aeroportuale
+                                    </label>
+
+                                </div>
+
+
+                                <div class="service-option">
+
+                                    <input
+                                        type="radio"
+                                        id="service-private"
+                                        name="service"
+                                        value="privati"
+                                    >
+
+                                    <label for="service-private">
+                                        Transfer
+                                        privato
+                                    </label>
+
+                                </div>
+
+
+                                <div class="service-option">
+
+                                    <input
+                                        type="radio"
+                                        id="service-business"
+                                        name="service"
+                                        value="business"
+                                    >
+
+                                    <label for="service-business">
+                                        Business
+                                        travel
+                                    </label>
+
+                                </div>
+
+
+                                <div class="service-option">
+
+                                    <input
+                                        type="radio"
+                                        id="service-tour"
+                                        name="service"
+                                        value="tour"
+                                    >
+
+                                    <label for="service-tour">
+                                        Tour &amp;
+                                        territorio
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- AEROPORTO -->
+
+                        <div
+                            class="form-group"
+                            id="airport-group"
+                            hidden
+                        >
+
+                            <label for="airport">
+                                Aeroporto
+                            </label>
+
+                            <select
+                                id="airport"
+                                name="airport"
+                            >
+
+                                <option value="">
+                                    Seleziona l'aeroporto
+                                </option>
+
+                                <option value="brindisi">
+                                    Aeroporto di Brindisi
+                                </option>
+
+                                <option value="bari">
+                                    Aeroporto di Bari
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- DATI PERSONALI -->
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Nome
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    autocomplete="given-name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="surname">
+                                    Cognome
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="surname"
+                                    name="surname"
+                                    autocomplete="family-name"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Telefono
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- DATA -->
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="date">
+                                    Data
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="date"
+                                    name="date"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="time">
+                                    Ora
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="time"
+                                    name="time"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PERCORSO -->
+
+                        <div class="form-group">
+
+                            <label for="departure">
+                                Partenza
+                            </label>
+
+                            <input
+                                type="text"
+                                id="departure"
+                                name="departure"
+                                placeholder="Da dove vuoi partire?"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="destination">
+                                Destinazione
+                            </label>
+
+                            <input
+                                type="text"
+                                id="destination"
+                                name="destination"
+                                placeholder="Dove vuoi arrivare?"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- PASSEGGERI -->
+
+                        <div class="form-group">
+
+                            <label for="passengers">
+                                Passeggeri
+                            </label>
+
+                            <select
+                                id="passengers"
+                                name="passengers"
+                                required
+                            >
+
+                                <option value="">
+                                    Seleziona il numero di passeggeri
+                                </option>
+
+                                <option value="1">
+                                    1 passeggero
+                                </option>
+
+                                <option value="2">
+                                    2 passeggeri
+                                </option>
+
+                                <option value="3">
+                                    3 passeggeri
+                                </option>
+
+                                <option value="4">
+                                    4 passeggeri
+                                </option>
+
+                                <option value="5">
+                                    5 passeggeri
+                                </option>
+
+                                <option value="6">
+                                    6 passeggeri
+                                </option>
+
+                                <option value="7">
+                                    7 passeggeri
+                                </option>
+
+                                <option value="8">
+                                    8 passeggeri
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- NOTE -->
+
+                        <div class="form-group">
+
+                            <label for="notes">
+                                Note <span>(facoltative)</span>
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                name="notes"
+                                placeholder="Eventuali richieste o informazioni aggiuntive..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="button button-dark booking-submit"
+                        >
+                            Invia richiesta
+                        </button>
+
+
+                        <p class="form-note">
+                            La richiesta verrà verificata e
+                            successivamente confermata.
+                        </p>
+
+                    </form>
+
                 </div>
 
-            </div>
 
-        </div>
+                <!-- LATO -->
 
-    </section>
-
-
-    <!-- FORM -->
-
-    <section class="booking section">
-
-        <div class="container">
-
-            <div class="booking-layout">
-
-                <div class="booking-intro">
+                <aside class="booking-side">
 
                     <p class="eyebrow">
-                        RICHIEDI IL TUO TRANSFER
+                        SALENTO EXECUTIVE NCC
                     </p>
 
                     <h2>
-                        Raccontaci
-                        il tuo viaggio.
+                        Un servizio
+                        pensato per te.
                     </h2>
 
                     <p>
-                        Inserisci le informazioni necessarie
-                        per permetterci di organizzare il
-                        servizio nel modo migliore.
+                        Ogni trasferimento viene organizzato
+                        prestando attenzione ai dettagli del
+                        tuo viaggio.
                     </p>
 
-                </div>
+
+                    <div class="booking-steps">
 
 
-                <form
-                    class="booking-form"
-                    id="booking-form"
-                >
+                        <div class="booking-step">
 
-                    <!-- SERVIZIO -->
+                            <div class="booking-step-number">
+                                01
+                            </div>
 
-                    <div class="form-group">
+                            <div>
 
-                        <label for="service">
-                            Servizio
-                        </label>
+                                <strong>
+                                    Compila la richiesta
+                                </strong>
 
-                        <select
-                            id="service"
-                            name="service"
-                            required
-                        >
+                                <span>
+                                    Inserisci i dati del tuo viaggio.
+                                </span>
 
-                            <option value="">
-                                Seleziona un servizio
-                            </option>
-
-                            <option value="aeroportuale">
-                                Transfer aeroportuale
-                            </option>
-
-                            <option value="privati">
-                                Transfer privato
-                            </option>
-
-                            <option value="business">
-                                Business travel
-                            </option>
-
-                            <option value="tour">
-                                Tour & territorio
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <!-- AEROPORTO -->
-
-                    <div
-                        class="form-group"
-                        id="airport-group"
-                        hidden
-                    >
-
-                        <label for="airport">
-                            Aeroporto
-                        </label>
-
-                        <select
-                            id="airport"
-                            name="airport"
-                        >
-
-                            <option value="">
-                                Seleziona l'aeroporto
-                            </option>
-
-                            <option value="brindisi">
-                                Aeroporto di Brindisi
-                            </option>
-
-                            <option value="bari">
-                                Aeroporto di Bari
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <!-- NOME -->
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="name">
-                                Nome
-                            </label>
-
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                autocomplete="given-name"
-                                required
-                            >
+                            </div>
 
                         </div>
 
 
-                        <div class="form-group">
+                        <div class="booking-step">
 
-                            <label for="surname">
-                                Cognome
-                            </label>
+                            <div class="booking-step-number">
+                                02
+                            </div>
 
-                            <input
-                                type="text"
-                                id="surname"
-                                name="surname"
-                                autocomplete="family-name"
-                                required
-                            >
+                            <div>
 
-                        </div>
+                                <strong>
+                                    Verifichiamo la disponibilità
+                                </strong>
 
-                    </div>
+                                <span>
+                                    Organizziamo il servizio in base
+                                    alle tue esigenze.
+                                </span>
 
-
-                    <!-- TELEFONO -->
-
-                    <div class="form-group">
-
-                        <label for="phone">
-                            Telefono
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            autocomplete="tel"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- DATA E ORA -->
-
-                    <div class="form-row">
-
-                        <div class="form-group">
-
-                            <label for="date">
-                                Data
-                            </label>
-
-                            <input
-                                type="date"
-                                id="date"
-                                name="date"
-                                required
-                            >
+                            </div>
 
                         </div>
 
 
-                        <div class="form-group">
+                        <div class="booking-step">
 
-                            <label for="time">
-                                Ora
-                            </label>
+                            <div class="booking-step-number">
+                                03
+                            </div>
 
-                            <input
-                                type="time"
-                                id="time"
-                                name="time"
-                                required
-                            >
+                            <div>
+
+                                <strong>
+                                    Confermiamo il viaggio
+                                </strong>
+
+                                <span>
+                                    Riceverai tutte le informazioni
+                                    necessarie.
+                                </span>
+
+                            </div>
 
                         </div>
 
-                    </div>
-
-
-                    <!-- PARTENZA -->
-
-                    <div class="form-group">
-
-                        <label for="departure">
-                            Partenza
-                        </label>
-
-                        <input
-                            type="text"
-                            id="departure"
-                            name="departure"
-                            placeholder="Inserisci il punto di partenza"
-                            autocomplete="street-address"
-                            required
-                        >
 
                     </div>
 
-
-                    <!-- DESTINAZIONE -->
-
-                    <div class="form-group">
-
-                        <label for="destination">
-                            Destinazione
-                        </label>
-
-                        <input
-                            type="text"
-                            id="destination"
-                            name="destination"
-                            placeholder="Inserisci la destinazione"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- PASSEGGERI -->
-
-                    <div class="form-group">
-
-                        <label for="passengers">
-                            Passeggeri
-                        </label>
-
-                        <select
-                            id="passengers"
-                            name="passengers"
-                            required
-                        >
-
-                            <option value="">
-                                Seleziona
-                            </option>
-
-                            <option value="1">
-                                1 passeggero
-                            </option>
-
-                            <option value="2">
-                                2 passeggeri
-                            </option>
-
-                            <option value="3">
-                                3 passeggeri
-                            </option>
-
-                            <option value="4">
-                                4 passeggeri
-                            </option>
-
-                            <option value="5">
-                                5 passeggeri
-                            </option>
-
-                            <option value="6">
-                                6 passeggeri
-                            </option>
-
-                            <option value="7">
-                                7 passeggeri
-                            </option>
-
-                            <option value="8">
-                                8 passeggeri
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <!-- NOTE -->
-
-                    <div class="form-group">
-
-                        <label for="notes">
-                            Note
-                            <span>(facoltative)</span>
-                        </label>
-
-                        <textarea
-                            id="notes"
-                            name="notes"
-                            rows="5"
-                            placeholder="Eventuali informazioni aggiuntive"
-                        ></textarea>
-
-                    </div>
-
-
-                    <!-- INVIO -->
-
-                    <button
-                        type="submit"
-                        class="button button-dark booking-submit"
-                    >
-                        Invia richiesta
-                    </button>
-
-
-                    <p class="form-note">
-                        La richiesta non costituisce una conferma
-                        automatica della prenotazione. Verrai
-                        ricontattato per la conferma del servizio.
-                    </p>
-
-                </form>
+                </aside>
 
             </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CTA -->
-
-    <section class="final-cta section">
-
-        <div class="container final-cta-content">
-
-            <p class="eyebrow">
-                SALENTO EXECUTIVE NCC
-            </p>
-
-            <h2>
-                Hai bisogno di aiuto?
-            </h2>
-
-            <p>
-                Se preferisci, puoi contattarci direttamente
-                per organizzare il tuo trasferimento.
-            </p>
-
-            <a
-                href="../contatti/"
-                class="button button-dark"
-            >
-                Contattaci
-            </a>
 
         </div>
 
@@ -512,11 +909,10 @@
 </main>
 
 
-<!-- FOOTER -->
-
 <footer class="footer">
 
     <div class="container footer-grid">
+
 
         <div class="footer-brand">
 
@@ -607,6 +1003,7 @@
 
 <script src="../js/main.js"></script>
 
+
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -616,48 +1013,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const service = params.get("servizio");
     const airport = params.get("aeroporto");
 
-    const serviceSelect = document.getElementById("service");
-    const airportSelect = document.getElementById("airport");
-    const airportGroup = document.getElementById("airport-group");
+    const serviceInputs =
+        document.querySelectorAll(
+            'input[name="service"]'
+        );
+
+    const airportGroup =
+        document.getElementById("airport-group");
+
+    const airportSelect =
+        document.getElementById("airport");
 
 
+    function updateAirport() {
 
-    /* SERVIZIO PRESELEZIONATO */
+        const selected =
+            document.querySelector(
+                'input[name="service"]:checked'
+            );
 
-    if (service) {
-
-        serviceSelect.value = service;
-
-    }
-
-
-
-    /* MOSTRA AEROPORTO */
-
-    if (service === "aeroportuale") {
-
-        airportGroup.hidden = false;
-        airportSelect.required = true;
-
-    }
-
-
-
-    /* AEROPORTO PRESELEZIONATO */
-
-    if (airport) {
-
-        airportSelect.value = airport;
-
-    }
-
-
-
-    /* CAMBIO SERVIZIO */
-
-    serviceSelect.addEventListener("change", function () {
-
-        if (this.value === "aeroportuale") {
+        if (
+            selected &&
+            selected.value === "aeroportuale"
+        ) {
 
             airportGroup.hidden = false;
             airportSelect.required = true;
@@ -670,11 +1048,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+    }
+
+
+    /* PRESELEZIONE SERVIZIO */
+
+    if (service) {
+
+        const input =
+            document.querySelector(
+                `input[name="service"][value="${service}"]`
+            );
+
+        if (input) {
+            input.checked = true;
+        }
+
+    }
+
+
+    /* MOSTRA AEROPORTO */
+
+    updateAirport();
+
+
+    /* PRESELEZIONE AEROPORTO */
+
+    if (airport) {
+        airportSelect.value = airport;
+    }
+
+
+    /* CAMBIO SERVIZIO */
+
+    serviceInputs.forEach(function (input) {
+
+        input.addEventListener(
+            "change",
+            updateAirport
+        );
+
     });
 
 
-
-    /* INVIO */
+    /* INVIO PROVVISORIO */
 
     document
         .getElementById("booking-form")
@@ -683,8 +1100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             alert(
-                "Richiesta pronta per essere inviata. " +
-                "Il sistema di invio verrà configurato nella prossima fase."
+                "La richiesta è stata compilata correttamente."
             );
 
         });
