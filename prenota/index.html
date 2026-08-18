@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prenota | Salento Executive NCC</title>
+
+    <meta
+        name="description"
+        content="Richiedi una prenotazione a Salento Executive NCC per il tuo prossimo trasferimento privato."
+    >
+
+    <meta name="theme-color" content="#f4efe7">
+
+    <link rel="icon" href="../favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="container header-inner">
+
+        <a
+            href="../"
+            class="logo-link"
+            aria-label="Salento Executive NCC"
+        >
+            <img
+                src="../logo.png"
+                alt="Salento Executive NCC"
+                class="logo"
+            >
+        </a>
+
+        <nav class="navigation">
+
+            <a href="../servizi/">
+                Servizi
+            </a>
+
+            <a href="../trasferimenti/">
+                Trasferimenti
+            </a>
+
+            <a href="../chi-siamo/">
+                Chi siamo
+            </a>
+
+            <a href="../contatti/">
+                Contatti
+            </a>
+
+            <a
+                href="../prenota/"
+                class="nav-button"
+            >
+                Prenota
+            </a>
+
+        </nav>
+
+        <button
+            class="menu-button"
+            type="button"
+            aria-label="Apri menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="hero-text">
+
+                <p class="eyebrow">
+                    PRENOTAZIONE
+                </p>
+
+                <h1>
+                    Il tuo viaggio,
+                    <em>inizia qui.</em>
+                </h1>
+
+                <p class="hero-description">
+                    Compila il modulo con i dettagli del tuo
+                    trasferimento. Ti ricontatteremo per
+                    confermare la disponibilità e organizzare
+                    il servizio.
+                </p>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="hero-frame">
+
+                    <div class="hero-frame-content">
+
+                        <span class="hero-label">
+                            PRIVATE DRIVER
+                        </span>
+
+                        <div class="hero-line"></div>
+
+                        <h2>
+                            Prenota
+                        </h2>
+
+                        <p>
+                            semplice · privato · su misura
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FORM -->
+
+    <section class="booking section">
+
+        <div class="container">
+
+            <div class="booking-layout">
+
+                <div class="booking-intro">
+
+                    <p class="eyebrow">
+                        RICHIEDI IL TUO TRANSFER
+                    </p>
+
+                    <h2>
+                        Raccontaci
+                        il tuo viaggio.
+                    </h2>
+
+                    <p>
+                        Inserisci le informazioni necessarie
+                        per permetterci di organizzare il
+                        servizio nel modo migliore.
+                    </p>
+
+                </div>
+
+
+                <form
+                    class="booking-form"
+                    id="booking-form"
+                >
+
+                    <!-- SERVIZIO -->
+
+                    <div class="form-group">
+
+                        <label for="service">
+                            Servizio
+                        </label>
+
+                        <select
+                            id="service"
+                            name="service"
+                            required
+                        >
+
+                            <option value="">
+                                Seleziona un servizio
+                            </option>
+
+                            <option value="aeroportuale">
+                                Transfer aeroportuale
+                            </option>
+
+                            <option value="privati">
+                                Transfer privato
+                            </option>
+
+                            <option value="business">
+                                Business travel
+                            </option>
+
+                            <option value="tour">
+                                Tour & territorio
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- AEROPORTO -->
+
+                    <div
+                        class="form-group"
+                        id="airport-group"
+                        hidden
+                    >
+
+                        <label for="airport">
+                            Aeroporto
+                        </label>
+
+                        <select
+                            id="airport"
+                            name="airport"
+                        >
+
+                            <option value="">
+                                Seleziona l'aeroporto
+                            </option>
+
+                            <option value="brindisi">
+                                Aeroporto di Brindisi
+                            </option>
+
+                            <option value="bari">
+                                Aeroporto di Bari
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- NOME -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Nome
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                autocomplete="given-name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="surname">
+                                Cognome
+                            </label>
+
+                            <input
+                                type="text"
+                                id="surname"
+                                name="surname"
+                                autocomplete="family-name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TELEFONO -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Telefono
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DATA E ORA -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="date">
+                                Data
+                            </label>
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="time">
+                                Ora
+                            </label>
+
+                            <input
+                                type="time"
+                                id="time"
+                                name="time"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PARTENZA -->
+
+                    <div class="form-group">
+
+                        <label for="departure">
+                            Partenza
+                        </label>
+
+                        <input
+                            type="text"
+                            id="departure"
+                            name="departure"
+                            placeholder="Inserisci il punto di partenza"
+                            autocomplete="street-address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DESTINAZIONE -->
+
+                    <div class="form-group">
+
+                        <label for="destination">
+                            Destinazione
+                        </label>
+
+                        <input
+                            type="text"
+                            id="destination"
+                            name="destination"
+                            placeholder="Inserisci la destinazione"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSEGGERI -->
+
+                    <div class="form-group">
+
+                        <label for="passengers">
+                            Passeggeri
+                        </label>
+
+                        <select
+                            id="passengers"
+                            name="passengers"
+                            required
+                        >
+
+                            <option value="">
+                                Seleziona
+                            </option>
+
+                            <option value="1">
+                                1 passeggero
+                            </option>
+
+                            <option value="2">
+                                2 passeggeri
+                            </option>
+
+                            <option value="3">
+                                3 passeggeri
+                            </option>
+
+                            <option value="4">
+                                4 passeggeri
+                            </option>
+
+                            <option value="5">
+                                5 passeggeri
+                            </option>
+
+                            <option value="6">
+                                6 passeggeri
+                            </option>
+
+                            <option value="7">
+                                7 passeggeri
+                            </option>
+
+                            <option value="8">
+                                8 passeggeri
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- NOTE -->
+
+                    <div class="form-group">
+
+                        <label for="notes">
+                            Note
+                            <span>(facoltative)</span>
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            name="notes"
+                            rows="5"
+                            placeholder="Eventuali informazioni aggiuntive"
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- INVIO -->
+
+                    <button
+                        type="submit"
+                        class="button button-dark booking-submit"
+                    >
+                        Invia richiesta
+                    </button>
+
+
+                    <p class="form-note">
+                        La richiesta non costituisce una conferma
+                        automatica della prenotazione. Verrai
+                        ricontattato per la conferma del servizio.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="final-cta section">
+
+        <div class="container final-cta-content">
+
+            <p class="eyebrow">
+                SALENTO EXECUTIVE NCC
+            </p>
+
+            <h2>
+                Hai bisogno di aiuto?
+            </h2>
+
+            <p>
+                Se preferisci, puoi contattarci direttamente
+                per organizzare il tuo trasferimento.
+            </p>
+
+            <a
+                href="../contatti/"
+                class="button button-dark"
+            >
+                Contattaci
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div class="footer-brand">
+
+            <a href="../">
+                Salento Executive NCC
+            </a>
+
+            <p>
+                Servizio di noleggio con conducente
+                nel Salento.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Navigazione
+            </h3>
+
+            <a href="../servizi/">
+                Servizi
+            </a>
+
+            <a href="../trasferimenti/">
+                Trasferimenti
+            </a>
+
+            <a href="../chi-siamo/">
+                Chi siamo
+            </a>
+
+            <a href="../contatti/">
+                Contatti
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Informazioni
+            </h3>
+
+            <a href="../privacy/">
+                Privacy
+            </a>
+
+            <a href="../termini/">
+                Termini e condizioni
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>
+                Prenotazioni
+            </h3>
+
+            <a href="../prenota/">
+                Richiedi una prenotazione
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+        <span>
+            © <span id="current-year"></span>
+            Salento Executive NCC
+        </span>
+
+        <span>
+            Salento · Puglia
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script src="../js/main.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+
+    const service = params.get("servizio");
+    const airport = params.get("aeroporto");
+
+    const serviceSelect = document.getElementById("service");
+    const airportSelect = document.getElementById("airport");
+    const airportGroup = document.getElementById("airport-group");
+
+
+
+    /* SERVIZIO PRESELEZIONATO */
+
+    if (service) {
+
+        serviceSelect.value = service;
+
+    }
+
+
+
+    /* MOSTRA AEROPORTO */
+
+    if (service === "aeroportuale") {
+
+        airportGroup.hidden = false;
+        airportSelect.required = true;
+
+    }
+
+
+
+    /* AEROPORTO PRESELEZIONATO */
+
+    if (airport) {
+
+        airportSelect.value = airport;
+
+    }
+
+
+
+    /* CAMBIO SERVIZIO */
+
+    serviceSelect.addEventListener("change", function () {
+
+        if (this.value === "aeroportuale") {
+
+            airportGroup.hidden = false;
+            airportSelect.required = true;
+
+        } else {
+
+            airportGroup.hidden = true;
+            airportSelect.required = false;
+            airportSelect.value = "";
+
+        }
+
+    });
+
+
+
+    /* INVIO */
+
+    document
+        .getElementById("booking-form")
+        .addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            alert(
+                "Richiesta pronta per essere inviata. " +
+                "Il sistema di invio verrà configurato nella prossima fase."
+            );
+
+        });
+
+});
+
+</script>
+
+</body>
+</html>
