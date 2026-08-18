@@ -1356,3 +1356,22 @@ h3 {
 .contact-cards {
     grid-template-columns: repeat(3, 1fr);
 }
+
+.legal-content {
+    max-width: 850px;
+}
+
+.legal-content h2 {
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.legal-content p {
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.legal-content ul {
+    padding-left: 25px;
+    line-height: 1.8;
+}
