@@ -1375,3 +1375,54 @@ h3 {
     padding-left: 25px;
     line-height: 1.8;
 }
+
+/* PAGINE LEGALI */
+
+.legal-content {
+    max-width: 900px;
+}
+
+.legal-content h2 {
+    font-size: 1.35rem;
+    font-weight: 500;
+
+    margin-top: 55px;
+    margin-bottom: 18px;
+
+    letter-spacing: -0.02em;
+}
+
+.legal-content p,
+.legal-content li {
+    color: #5e5952;
+    font-size: 1rem;
+    line-height: 1.85;
+}
+
+.legal-content p {
+    margin-bottom: 20px;
+}
+
+.legal-content ul {
+    margin: 20px 0 30px;
+    padding-left: 25px;
+}
+
+.legal-content li {
+    margin-bottom: 10px;
+}
+
+
+/* blocchi separati */
+
+.legal-content h2::before {
+    content: "";
+    display: block;
+
+    width: 35px;
+    height: 1px;
+
+    background: #24221f;
+
+    margin-bottom: 18px;
+}
