@@ -556,10 +556,10 @@
                         <!-- AEROPORTO -->
 
                         <div
-                            class="form-group"
-                            id="airport-group"
-                            hidden
-                        >
+    class="form-group airport-field"
+    id="airport-group"
+    style="display: none;"
+>
 
                             <label for="airport">
                                 Aeroporto
@@ -1013,36 +1013,39 @@ document.addEventListener("DOMContentLoaded", function () {
     const service = params.get("servizio");
     const airport = params.get("aeroporto");
 
-    const serviceInputs =
-        document.querySelectorAll(
-            'input[name="service"]'
-        );
+    const serviceInputs = document.querySelectorAll(
+        'input[name="service"]'
+    );
 
-    const airportGroup =
-        document.getElementById("airport-group");
+    const airportGroup = document.getElementById(
+        "airport-group"
+    );
 
-    const airportSelect =
-        document.getElementById("airport");
+    const airportSelect = document.getElementById(
+        "airport"
+    );
 
 
-    function updateAirport() {
+    function updateAirportVisibility() {
 
-        const selected =
+        const selectedService =
             document.querySelector(
                 'input[name="service"]:checked'
             );
 
-        if (
-            selected &&
-            selected.value === "aeroportuale"
-        ) {
+        const isAirport =
+            selectedService &&
+            selectedService.value === "aeroportuale";
 
-            airportGroup.hidden = false;
+
+        if (isAirport) {
+
+            airportGroup.style.display = "flex";
             airportSelect.required = true;
 
         } else {
 
-            airportGroup.hidden = true;
+            airportGroup.style.display = "none";
             airportSelect.required = false;
             airportSelect.value = "";
 
@@ -1055,21 +1058,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (service) {
 
-        const input =
+        const serviceInput =
             document.querySelector(
                 `input[name="service"][value="${service}"]`
             );
 
-        if (input) {
-            input.checked = true;
+        if (serviceInput) {
+            serviceInput.checked = true;
         }
 
     }
-
-
-    /* MOSTRA AEROPORTO */
-
-    updateAirport();
 
 
     /* PRESELEZIONE AEROPORTO */
@@ -1079,19 +1077,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* STATO INIZIALE */
+
+    updateAirportVisibility();
+
+
     /* CAMBIO SERVIZIO */
 
     serviceInputs.forEach(function (input) {
 
         input.addEventListener(
             "change",
-            updateAirport
+            updateAirportVisibility
         );
 
     });
 
 
-    /* INVIO PROVVISORIO */
+    /* INVIO WHATSAPP */
 
     document
         .getElementById("booking-form")
@@ -1099,8 +1102,186 @@ document.addEventListener("DOMContentLoaded", function () {
 
             event.preventDefault();
 
-            alert(
-                "La richiesta è stata compilata correttamente."
+
+            const selectedService =
+                document.querySelector(
+                    'input[name="service"]:checked'
+                );
+
+
+            if (!selectedService) {
+                return;
+            }
+
+
+            const serviceNames = {
+
+                aeroportuale:
+                    "Transfer aeroportuale",
+
+                privati:
+                    "Transfer privato",
+
+                business:
+                    "Business travel",
+
+                tour:
+                    "Tour & territorio"
+
+            };
+
+
+            const serviceName =
+                serviceNames[selectedService.value];
+
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const surname =
+                document.getElementById("surname").value.trim();
+
+            const phone =
+                document.getElementById("phone").value.trim();
+
+            const date =
+                document.getElementById("date").value;
+
+            const time =
+                document.getElementById("time").value;
+
+            const departure =
+                document.getElementById("departure").value.trim();
+
+            const destination =
+                document.getElementById("destination").value.trim();
+
+            const passengers =
+                document.getElementById("passengers").value;
+
+            const notes =
+                document.getElementById("notes").value.trim();
+
+
+            let airportName = "";
+
+            if (
+                selectedService.value === "aeroportuale" &&
+                airportSelect.value
+            ) {
+
+                const airportNames = {
+
+                    brindisi:
+                        "Aeroporto di Brindisi",
+
+                    bari:
+                        "Aeroporto di Bari"
+
+                };
+
+                airportName =
+                    airportNames[airportSelect.value];
+
+            }
+
+
+            let message =
+                "NUOVA RICHIESTA DI PRENOTAZIONE\n\n";
+
+
+            message +=
+                "Servizio: " +
+                serviceName +
+                "\n";
+
+
+            if (airportName) {
+
+                message +=
+                    "Aeroporto: " +
+                    airportName +
+                    "\n";
+
+            }
+
+
+            message +=
+                "\nDATI DEL CLIENTE\n";
+
+
+            message +=
+                "Nome: " +
+                name +
+                " " +
+                surname +
+                "\n";
+
+
+            message +=
+                "Telefono: " +
+                phone +
+                "\n";
+
+
+            message +=
+                "\nDETTAGLI DEL VIAGGIO\n";
+
+
+            message +=
+                "Data: " +
+                date +
+                "\n";
+
+
+            message +=
+                "Ora: " +
+                time +
+                "\n";
+
+
+            message +=
+                "Partenza: " +
+                departure +
+                "\n";
+
+
+            message +=
+                "Destinazione: " +
+                destination +
+                "\n";
+
+
+            message +=
+                "Passeggeri: " +
+                passengers +
+                "\n";
+
+
+            if (notes) {
+
+                message +=
+                    "\nNOTE\n" +
+                    notes +
+                    "\n";
+
+            }
+
+
+            const whatsappNumber =
+                "393200404903";
+
+
+            const whatsappURL =
+                "https://wa.me/" +
+                whatsappNumber +
+                "?text=" +
+                encodeURIComponent(message);
+
+
+            window.open(
+                whatsappURL,
+                "_blank"
             );
 
         });
