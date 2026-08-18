@@ -1346,5 +1346,13 @@ h3 {
     .airport-grid .service-card {
         min-height: auto;
     }
+.contact-cards {
+    grid-template-columns: 1fr;
+}
+}
 
+/* CONTATTI - 3 CARD */
+
+.contact-cards {
+    grid-template-columns: repeat(3, 1fr);
 }
