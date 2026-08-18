@@ -1011,10 +1011,10 @@ h3 {
     }
 
 
-    .logo {
-
-        width: 145px;
-    }
+.logo {
+    height: 48px;
+    width: auto;
+}
 
 
     /* MOBILE MENU */
