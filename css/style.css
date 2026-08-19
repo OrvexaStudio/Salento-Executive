@@ -1676,20 +1676,3 @@ h3 {
     margin: 0 auto;
 }
 
-/* =================================
-   LEGAL HERO SENZA CARD
-================================= */
-
-.legal-hero-content {
-    max-width: 850px;
-}
-
-.legal-hero-content h1 {
-    margin-bottom: 25px;
-}
-
-.legal-hero-content p:not(.eyebrow) {
-    color: var(--text-soft);
-    font-size: 18px;
-    line-height: 1.8;
-}
