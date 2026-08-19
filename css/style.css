@@ -1856,3 +1856,37 @@ input[type="time"] {
     }
 
 }
+
+/* FIX DEFINITIVO DATA E ORA IPHONE */
+
+@media (max-width: 700px) {
+
+    .booking-card {
+        overflow: hidden;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        min-width: 0;
+    }
+
+    .form-group {
+        min-width: 0;
+    }
+
+    .form-group input[type="date"],
+    .form-group input[type="time"] {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        display: block;
+        font-size: 13px;
+        padding: 12px 8px;
+        letter-spacing: -0.5px;
+        transform: scaleX(0.98);
+        transform-origin: left center;
+    }
+
+}
