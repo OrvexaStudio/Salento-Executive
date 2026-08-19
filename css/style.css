@@ -1357,11 +1357,43 @@ h3 {
     grid-template-columns: repeat(3, 1fr);
 }
 
-/* PAGINE LEGALI */
+
+/* =========================================================
+   PAGINE LEGALI
+========================================================= */
 
 .legal-hero {
-    padding-top: 120px;
-    padding-bottom: 80px;
+    background: var(--cream);
+    padding: 110px 0 90px;
+}
+
+.legal-hero-content {
+    max-width: 820px;
+}
+
+.legal-hero-content .eyebrow {
+    margin-bottom: 24px;
+}
+
+.legal-hero-content h1 {
+    font-size: clamp(52px, 7vw, 82px);
+    line-height: 1;
+    margin-bottom: 28px;
+}
+
+.legal-hero-content > p:last-child {
+    max-width: 680px;
+    color: var(--text-soft);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* CONTENUTO */
+
+.legal-section {
+    background: var(--background);
+    padding: 90px 0 120px;
 }
 
 .legal-wrapper {
@@ -1371,61 +1403,115 @@ h3 {
 
 .legal-content {
     width: 100%;
-    max-width: 850px;
-
-    background: #fffdf9;
-
-    padding: 60px;
-
-    border: 1px solid rgba(35,33,29,.08);
+    max-width: 900px;
 }
 
+
+/* SEZIONI */
 
 .legal-content h2 {
+    position: relative;
 
-    font-size: 1.45rem;
-    font-weight: 500;
-
-    margin-top: 45px;
+    margin-top: 65px;
     margin-bottom: 20px;
 
-    color: #24221f;
+    padding-top: 24px;
 
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 30px;
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    color: var(--text);
 }
-
 
 .legal-content h2:first-child {
     margin-top: 0;
 }
 
 
-.legal-content p,
-.legal-content li {
+/* LINEA SOPRA OGNI SEZIONE */
 
-    color: #5f5a53;
+.legal-content h2::before {
+    content: "";
 
-    font-size: 1rem;
+    position: absolute;
 
-    line-height: 1.8;
+    top: 0;
+    left: 0;
 
+    width: 42px;
+    height: 1px;
+
+    background: var(--taupe);
 }
 
+
+/* TESTO */
+
+.legal-content p {
+    max-width: 780px;
+
+    margin-bottom: 18px;
+
+    color: var(--text-soft);
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+
+/* LISTE */
 
 .legal-content ul {
+    max-width: 780px;
 
-    padding-left: 25px;
+    margin: 20px 0 28px;
 
-    margin-bottom: 25px;
-
+    padding-left: 22px;
 }
-
 
 .legal-content li {
+    margin-bottom: 9px;
 
-    margin-bottom: 8px;
+    color: var(--text-soft);
 
+    font-size: 15px;
+
+    line-height: 1.8;
 }
 
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .legal-hero {
+        padding: 75px 0 65px;
+    }
+
+    .legal-hero-content h1 {
+        font-size: clamp(46px, 14vw, 64px);
+    }
+
+    .legal-section {
+        padding: 65px 0 80px;
+    }
+
+    .legal-content h2 {
+        margin-top: 50px;
+        font-size: 27px;
+    }
+
+    .legal-content p,
+    .legal-content li {
+        font-size: 14px;
+    }
+
+}
 /* ===============================
    PRIVACY E TERMINI - DESIGN
    =============================== */
