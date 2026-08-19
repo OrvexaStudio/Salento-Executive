@@ -1813,3 +1813,11 @@ h3 {
     }
 
 }
+
+@media (max-width: 700px) {
+
+    .contact-cards .service-card p {
+        display: none;
+    }
+
+}
