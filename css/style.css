@@ -1649,3 +1649,29 @@ h3 {
     }
 
 }
+
+/* TEST PRIVACY */
+.legal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fffdf9;
+    padding: 60px;
+    border: 1px solid rgba(41,38,33,0.1);
+}
+
+.legal-content h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-family: "Playfair Display", serif;
+}
+
+.legal-content p,
+.legal-content li {
+    color: #6f685f;
+    line-height: 1.8;
+}
+
+.legal-hero-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
