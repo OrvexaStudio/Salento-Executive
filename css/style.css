@@ -1860,3 +1860,24 @@ h3 {
     }
 
 }
+
+@media (max-width: 700px) {
+
+    .contact-cards .service-card,
+    .contact-cards .service-card:not(:first-child) {
+
+        padding-left: 0;
+        padding-right: 0;
+
+        text-align: left;
+    }
+
+
+    .contact-cards h3,
+    .contact-cards .text-link {
+
+        text-align: left;
+        justify-content: flex-start;
+    }
+
+}
