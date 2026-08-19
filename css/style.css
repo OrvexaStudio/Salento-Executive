@@ -1676,3 +1676,26 @@ h3 {
     margin: 0 auto;
 }
 
+/* ===============================
+   PAGINE LEGALI
+================================ */
+
+.legal-page .legal-hero {
+    background: var(--cream);
+    padding: 100px 0 80px;
+}
+
+.legal-page .intro-content {
+    max-width: 850px;
+}
+
+.legal-page .intro-content h1 {
+    margin-bottom: 25px;
+}
+
+.legal-page .intro-content p:not(.eyebrow) {
+    max-width: 750px;
+    color: var(--text-soft);
+    font-size: 18px;
+    line-height: 1.8;
+}
