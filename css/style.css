@@ -1846,3 +1846,17 @@ h3 {
     }
 
 }
+
+@media (max-width: 700px) {
+
+    .contact-cards .service-card {
+        text-align: left;
+    }
+
+    .contact-cards .text-link {
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: flex-start;
+    }
+
+}
