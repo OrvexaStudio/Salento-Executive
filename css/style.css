@@ -1821,3 +1821,28 @@ h3 {
     }
 
 }
+
+@media (max-width: 700px) {
+
+    .contact-cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .contact-cards .service-card {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .contact-cards .service-number,
+    .contact-cards h3,
+    .contact-cards .text-link {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .contact-cards h3 {
+        font-size: 22px;
+    }
+
+}
