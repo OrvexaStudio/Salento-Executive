@@ -1425,3 +1425,130 @@ h3 {
     margin-bottom: 8px;
 
 }
+
+/* ===============================
+   PRIVACY E TERMINI - DESIGN
+   =============================== */
+
+.legal-hero {
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+
+.legal-hero .intro-content {
+    max-width: 750px;
+}
+
+
+.legal-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    margin-bottom: 25px;
+}
+
+
+.legal-section {
+    padding-top: 40px;
+    padding-bottom: 100px;
+}
+
+
+.legal-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+
+.legal-content {
+
+    width: 100%;
+    max-width: 950px;
+
+    background: #fffdf9;
+
+    padding: 70px;
+
+    border-radius: 2px;
+
+    border: 1px solid rgba(35,33,29,.08);
+
+}
+
+
+
+.legal-content h2 {
+
+    font-size: 1.5rem;
+
+    font-weight: 500;
+
+    letter-spacing: -0.02em;
+
+    margin-top: 55px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.legal-content h2:first-child {
+
+    margin-top: 0;
+
+}
+
+
+
+.legal-content p {
+
+    color: #625d56;
+
+    font-size: 1.05rem;
+
+    line-height: 1.9;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.legal-content ul {
+
+    padding-left: 25px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.legal-content li {
+
+    color: #625d56;
+
+    line-height: 1.9;
+
+    margin-bottom: 8px;
+
+}
+
+
+
+@media(max-width:700px){
+
+    .legal-content {
+
+        padding: 30px 22px;
+
+    }
+
+
+    .legal-content h2 {
+
+        margin-top: 40px;
+
+    }
+
+}
