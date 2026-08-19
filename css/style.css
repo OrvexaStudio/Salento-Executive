@@ -1788,3 +1788,12 @@ h3 {
     }
 
 }
+
+@media (max-width: 700px) {
+
+    .form-group input[type="date"],
+    .form-group input[type="time"] {
+        width: calc(100% - 4px);
+    }
+
+}
