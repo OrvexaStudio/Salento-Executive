@@ -1827,3 +1827,32 @@ input[type="time"] {
     }
 
 }
+
+/* Fix data e ora mobile */
+.form-row {
+    min-width: 0;
+}
+
+.form-row .form-group {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.form-row input[type="date"],
+.form-row input[type="time"] {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+}
