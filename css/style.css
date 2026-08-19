@@ -1747,115 +1747,13 @@ h3 {
     text-align: center;
 }
 
-/* Fix campo data e ora su mobile */
-
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"] {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-
-    .form-group input[type="date"],
-    .form-group input[type="time"],
-    .form-group input[type="datetime-local"] {
-        font-size: 15px;
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-}
-
-/* FIX INPUT DATA E ORA MOBILE */
-
-.form-group {
-    min-width: 0;
-    overflow: hidden;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-}
 
 
-input[type="date"],
-input[type="time"] {
-
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-
-    min-width: 0;
-
-    height: 52px;
-
-    box-sizing: border-box;
-
-    font-size: 15px;
-
-    padding-left: 12px;
-    padding-right: 12px;
-
-    overflow: hidden;
-}
 
 
-@media (max-width:700px) {
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
 
 
-    input[type="date"],
-    input[type="time"] {
 
-        font-size: 14px;
-
-        padding-left: 10px;
-        padding-right: 10px;
-
-    }
-
-}
-
-/* Fix data e ora mobile */
-.form-row {
-    min-width: 0;
-}
-
-.form-row .form-group {
-    min-width: 0;
-    overflow: hidden;
-}
-
-.form-row input[type="date"],
-.form-row input[type="time"] {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    font-size: 14px;
-    padding-left: 10px;
-    padding-right: 10px;
-    box-sizing: border-box;
-}
-
-@media (max-width: 700px) {
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
-}
 
 /* FIX DEFINITIVO DATA E ORA IPHONE */
 
