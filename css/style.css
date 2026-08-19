@@ -1722,3 +1722,27 @@ h3 {
     text-align: center;
     max-width: 750px;
 }
+
+/* ===============================
+   LEGAL HERO - PRIVACY E TERMINI
+================================ */
+
+.legal-page .legal-hero .intro-content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.legal-page .legal-hero .eyebrow {
+    text-align: center;
+}
+
+.legal-page .legal-hero h1 {
+    text-align: center;
+}
+
+.legal-page .legal-hero .intro-content > p:not(.eyebrow) {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+}
