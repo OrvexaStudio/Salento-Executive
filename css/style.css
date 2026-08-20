@@ -1883,7 +1883,7 @@ h3 {
 }
 
 /* ========================================
-   WHATSAPP FIXED BUTTON
+   WHATSAPP ICON BUTTON
 ======================================== */
 
 .whatsapp-fixed {
@@ -1895,30 +1895,30 @@ h3 {
 
     z-index: 999;
 
+    width: 58px;
+    height: 58px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    height: 54px;
-    padding: 0 24px;
-
     background: #25D366;
 
-    color: var(--white);
-
-    font-size: 12px;
-    font-weight: 600;
-
-    letter-spacing: 0.04em;
-
-    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
 
     box-shadow:
-        0 12px 30px rgba(41,38,33,0.18);
+        0 12px 30px rgba(0,0,0,0.18);
 
     transition:
         transform 0.25s ease,
         background 0.25s ease;
+}
+
+
+.whatsapp-fixed img {
+
+    width: 32px;
+    height: 32px;
 
 }
 
@@ -1932,20 +1932,23 @@ h3 {
 }
 
 
-/* MOBILE */
-
 @media (max-width: 700px) {
 
     .whatsapp-fixed {
 
+        width: 52px;
+        height: 52px;
+
         right: 18px;
         bottom: 18px;
 
-        height: 50px;
+    }
 
-        padding: 0 18px;
 
-        font-size: 11px;
+    .whatsapp-fixed img {
+
+        width: 28px;
+        height: 28px;
 
     }
 
