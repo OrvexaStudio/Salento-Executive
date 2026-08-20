@@ -1902,7 +1902,7 @@ h3 {
     height: 54px;
     padding: 0 24px;
 
-    background: var(--text);
+    background: #25D366;
 
     color: var(--white);
 
@@ -1927,7 +1927,7 @@ h3 {
 
     transform: translateY(-4px);
 
-    background: #3a3530;
+    background: #1ebe5d;
 
 }
 
