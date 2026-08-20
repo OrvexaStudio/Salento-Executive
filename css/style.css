@@ -1881,3 +1881,72 @@ h3 {
     }
 
 }
+
+/* ========================================
+   WHATSAPP FIXED BUTTON
+======================================== */
+
+.whatsapp-fixed {
+
+    position: fixed;
+
+    right: 28px;
+    bottom: 28px;
+
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 54px;
+    padding: 0 24px;
+
+    background: var(--text);
+
+    color: var(--white);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.04em;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 12px 30px rgba(41,38,33,0.18);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+
+}
+
+
+.whatsapp-fixed:hover {
+
+    transform: translateY(-4px);
+
+    background: #3a3530;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .whatsapp-fixed {
+
+        right: 18px;
+        bottom: 18px;
+
+        height: 50px;
+
+        padding: 0 18px;
+
+        font-size: 11px;
+
+    }
+
+}
