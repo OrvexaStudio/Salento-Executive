@@ -1953,3 +1953,25 @@ h3 {
     }
 
 }
+
+.privacy-check {
+    font-size: .85rem;
+    color: #716c64;
+    line-height: 1.6;
+}
+
+.privacy-check label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.privacy-check input {
+    margin-top: 4px;
+    width: auto;
+}
+
+.privacy-check a {
+    color: #24221f;
+    text-decoration: underline;
+}
