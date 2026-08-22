@@ -1425,70 +1425,62 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            message +=
-                "\nDATI DEL CLIENTE\n";
+message +=
+    "Nome e cognome: " +
+    document.getElementById("name").value +
+    " " +
+    document.getElementById("surname").value +
+    "\n";
 
 
-            message +=
-                "Nome: " +
-                document.getElementById("name").value +
-                " " +
-                document.getElementById("surname").value +
-                "\n";
+message +=
+    "Telefono: " +
+    document.getElementById("phone").value +
+    "\n";
 
 
-            message +=
-                "Telefono: " +
-                document.getElementById("phone").value +
-                "\n";
+message +=
+    "Indirizzo di partenza: " +
+    departureInput.value +
+    "\n";
 
 
-            message +=
-                "\nDETTAGLI DEL VIAGGIO\n";
+message +=
+    "Indirizzo di arrivo: " +
+    destinationInput.value +
+    "\n";
 
 
-            message +=
-                "Data: " +
-                document.getElementById("date").value +
-                "\n";
+message +=
+    "Data: " +
+    document.getElementById("date").value +
+    "\n";
 
 
-            message +=
-                "Ora: " +
-                document.getElementById("time").value +
-                "\n";
+message +=
+    "Ora: " +
+    document.getElementById("time").value +
+    "\n";
 
 
-            message +=
-                "Partenza: " +
-                departureInput.value +
-                "\n";
+message +=
+    "Numero passeggeri: " +
+    document.getElementById("passengers").value +
+    "\n";
 
 
-            message +=
-                "Destinazione: " +
-                destinationInput.value +
-                "\n";
+const notes =
+    document.getElementById("notes").value.trim();
 
 
-            message +=
-                "Passeggeri: " +
-                document.getElementById("passengers").value +
-                "\n";
+if (notes) {
 
+    message +=
+        "Note: " +
+        notes +
+        "\n";
 
-            const notes =
-                document.getElementById("notes").value.trim();
-
-
-            if (notes) {
-
-                message +=
-                    "\nNOTE\n" +
-                    notes +
-                    "\n";
-
-            }
+}
 
 
             const whatsappURL =
