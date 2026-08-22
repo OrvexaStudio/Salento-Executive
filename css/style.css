@@ -1975,3 +1975,78 @@ h3 {
     color: #24221f;
     text-decoration: underline;
 }
+
+/* DROPDOWN MENU */
+
+.dropdown {
+    position: relative;
+}
+
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    min-width: 220px;
+
+    background: #fffdf9;
+
+    border: 1px solid rgba(35,33,29,.08);
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.08);
+
+    padding: 12px 0;
+
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+
+    z-index: 1000;
+}
+
+
+
+.dropdown-menu a {
+
+    display: block;
+
+    padding: 12px 20px;
+
+    color: #24221f;
+
+    font-size: .9rem;
+
+    white-space: nowrap;
+
+}
+
+
+
+.dropdown-menu a:hover {
+
+    background: #f4efe7;
+
+}
+
+
+
+
+.dropdown:hover .dropdown-menu {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+}
