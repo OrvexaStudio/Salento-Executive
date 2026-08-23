@@ -1023,63 +1023,63 @@ h3 {
 }
 
 
-    /* MOBILE MENU */
+/* MOBILE MENU */
 
-    .menu-button {
+.menu-button {
 
-        display: block;
-    }
-
-
-    .navigation {
-
-        position: absolute;
-
-        top:
-            calc(100% + 8px);
-
-        left: 16px;
-        right: 16px;
-
-        display: none;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 0;
-
-        padding: 10px;
-
-        background:
-            var(--background);
-
-        border:
-            1px solid var(--border);
-
-        box-shadow:
-            0 18px 40px
-            rgba(41, 38, 33, 0.08);
-    }
+    display: block;
+}
 
 
-    .navigation.is-open {
+.navigation {
 
-        display: flex;
-    }
+    position: absolute;
+
+    top: calc(100% + 8px);
+
+    left: 16px;
+    right: 16px;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    padding: 24px 20px;
+
+    background: var(--background);
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 18px 40px
+        rgba(41, 38, 33, 0.08);
+}
+
+
+.navigation.is-open {
+
+    display: flex;
+}
+
 
 .navigation a {
 
-    padding: 18px 14px;
+    padding: 12px 10px;
+
+    line-height: 1.5;
 }
+
 
 .navigation .nav-button {
 
-    margin-top: 18px;
+    margin-top: 12px;
 
     text-align: center;
 }
-
 
     /* HERO */
 
