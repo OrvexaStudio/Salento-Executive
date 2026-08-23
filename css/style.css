@@ -1068,19 +1068,17 @@ h3 {
         display: flex;
     }
 
+.navigation a {
 
-    .navigation a {
+    padding: 18px 14px;
+}
 
-        padding: 14px;
-    }
+.navigation .nav-button {
 
+    margin-top: 18px;
 
-    .navigation .nav-button {
-
-        margin-top: 4px;
-
-        text-align: center;
-    }
+    text-align: center;
+}
 
 
     /* HERO */
