@@ -2136,3 +2136,10 @@ body.page-exit {
     animation: none !important;
 
 }
+
+.legal-divider {
+    width: 60px;
+    height: 2px;
+    background: #222;
+    margin: 24px 0;
+}
