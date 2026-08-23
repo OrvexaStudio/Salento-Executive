@@ -129,6 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.querySelectorAll("a").forEach(link => {
 
+    if (link.classList.contains("no-transition")) {
+        return;
+    }
+
     const url = link.getAttribute("href");
 
     if (
