@@ -150,7 +150,7 @@ document.querySelectorAll("a").forEach(link => {
 
                 window.location.href = url;
 
-            }, 450);
+            }, 300);
 
         });
 
