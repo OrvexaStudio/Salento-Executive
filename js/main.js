@@ -136,10 +136,11 @@ document.querySelectorAll("a").forEach(link => {
 
     const url = link.getAttribute("href");
 
-    if (
-        url &&
-        url.startsWith("../")
-    ) {
+if (
+    url &&
+    !url.startsWith("http") &&
+    !url.startsWith("#")
+) {
 
         link.addEventListener("click", function(e) {
 
