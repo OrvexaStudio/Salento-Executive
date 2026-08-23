@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.remove("page-exit");
 
     /* =====================================================
        MOBILE MENU
