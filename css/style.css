@@ -1072,11 +1072,25 @@ h3 {
 
     line-height: 1.5;
 }
+.dropdown {
+    width: 100%;
+}
 
+
+.dropdown-toggle {
+    display: block;
+    padding: 12px 10px;
+}
+
+
+.navigation > a,
+.dropdown {
+    margin-bottom: 18px;
+}
 
 .navigation .nav-button {
 
-    margin-top: 12px;
+    margin-top: 0;
 
     text-align: center;
 }
