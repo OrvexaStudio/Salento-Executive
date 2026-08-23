@@ -2068,15 +2068,7 @@ h3 {
    PREMIUM PAGE TRANSITION
 ======================================== */
 
-body {
 
-    opacity: 0;
-
-    animation:
-        pageReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1)
-        forwards;
-
-}
 
 
 @keyframes pageReveal {
@@ -2153,3 +2145,4 @@ body.page-exit {
     visibility: visible !important;
     z-index: 99999 !important;
 }
+
