@@ -2107,3 +2107,41 @@ body {
     }
 
 }
+
+body.page-exit {
+
+    animation:
+        pageExit 0.45s cubic-bezier(0.55, 0, 1, 0.45)
+        forwards;
+
+}
+
+
+@keyframes pageExit {
+
+    from {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+
+    }
+
+
+    to {
+
+        opacity: 0;
+
+        transform:
+            translateY(-20px);
+
+        filter:
+            blur(4px);
+
+    }
+
+}
