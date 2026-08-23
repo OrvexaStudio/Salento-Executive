@@ -133,21 +133,20 @@ document.querySelectorAll("a").forEach(link => {
 
     if (
         url &&
-        url.startsWith("../") &&
-        !url.startsWith("#")
+        url.startsWith("../")
     ) {
 
         link.addEventListener("click", function(e) {
 
             e.preventDefault();
 
-            document.body.style.opacity = "0";
+            document.body.classList.add("page-exit");
 
             setTimeout(() => {
 
                 window.location.href = url;
 
-            }, 250);
+            }, 450);
 
         });
 
