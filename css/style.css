@@ -2148,10 +2148,17 @@ body.page-exit {
 }
 
 .whatsapp-fixed {
-    display: flex !important;
-    position: fixed !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    z-index: 99999 !important;
-}
 
+    display: flex !important;
+
+    position: fixed !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    z-index: 99999 !important;
+
+    animation: none !important;
+
+}
