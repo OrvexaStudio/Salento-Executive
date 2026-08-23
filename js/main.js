@@ -126,3 +126,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+document.querySelectorAll("a").forEach(link => {
+
+    const url = link.getAttribute("href");
+
+    if (
+        url &&
+        url.startsWith("../") &&
+        !url.startsWith("#")
+    ) {
+
+        link.addEventListener("click", function(e) {
+
+            e.preventDefault();
+
+            document.body.style.opacity = "0";
+
+            setTimeout(() => {
+
+                window.location.href = url;
+
+            }, 250);
+
+        });
+
+    }
+
+});
