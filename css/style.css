@@ -2143,3 +2143,40 @@ body.page-exit {
     background: #222;
     margin: 24px 0;
 }
+
+/* ========================================
+   SOCIAL FOOTER
+======================================== */
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin: 28px 0 24px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: #222;
+    text-decoration: none;
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.footer-social img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.footer-social a:hover {
+    opacity: 0.55;
+    transform: translateY(-2px);
+}
