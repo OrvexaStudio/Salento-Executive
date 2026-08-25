@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       RESET PAGINA
+    ===================================================== */
+
     document.body.classList.remove("page-exit");
+
 
     /* =====================================================
        MOBILE MENU
@@ -128,6 +134,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+/* =====================================================
+   BACK / FORWARD BROWSER
+===================================================== */
+
+window.addEventListener("pageshow", () => {
+
+    document.body.classList.remove("page-exit");
+
+});
+
+
+/* =====================================================
+   TRANSIZIONE TRA LE PAGINE
+===================================================== */
+
 document.querySelectorAll("a").forEach(link => {
 
     if (link.classList.contains("no-transition")) {
@@ -136,11 +158,11 @@ document.querySelectorAll("a").forEach(link => {
 
     const url = link.getAttribute("href");
 
-if (
-    url &&
-    !url.startsWith("http") &&
-    !url.startsWith("#")
-) {
+    if (
+        url &&
+        !url.startsWith("http") &&
+        !url.startsWith("#")
+    ) {
 
         link.addEventListener("click", function(e) {
 
