@@ -2180,3 +2180,78 @@ body.page-exit {
     opacity: 0.55;
     transform: translateY(-2px);
 }
+
+/* ========================================
+   TARIFFE TABLE
+======================================== */
+
+.tariffe-table-wrapper {
+    width: 100%;
+    margin: 40px 0;
+    overflow-x: auto;
+}
+
+.tariffe-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: #f8f3e8;
+}
+
+.tariffe-table thead {
+    border-bottom: 1px solid rgba(34, 34, 34, 0.22);
+}
+
+.tariffe-table th {
+    padding: 18px 24px;
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.tariffe-table th:last-child {
+    text-align: right;
+}
+
+.tariffe-table td {
+    padding: 19px 24px;
+    border-bottom: 1px solid rgba(34, 34, 34, 0.10);
+    font-size: 1rem;
+}
+
+.tariffe-table td:last-child {
+    text-align: right;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.tariffe-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tariffe-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.tariffe-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 600px) {
+
+    .tariffe-table th,
+    .tariffe-table td {
+        padding: 16px 14px;
+    }
+
+    .tariffe-table th {
+        font-size: 0.7rem;
+    }
+
+    .tariffe-table td {
+        font-size: 0.92rem;
+    }
+
+}
