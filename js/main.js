@@ -1,95 +1,145 @@
+/* =====================================================
+   SALENTO EXECUTIVE NCC
+   MAIN.JS
+===================================================== */
+
+
+/* =====================================================
+   TRADUZIONI
+===================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
+    /* =================================================
        RESET PAGINA
-    ===================================================== */
+    ================================================= */
 
     document.body.classList.remove("page-exit");
 
 
-    /* =====================================================
-       SISTEMA LINGUE
-    ===================================================== */
+    /* =================================================
+       LINGUA
+    ================================================= */
 
-    const defaultLanguage = "it";
-    const languageStorageKey = "salentoExecutiveLanguage";
+    const supportedLanguages = ["it", "en", "fr", "es", "de"];
 
     const savedLanguage =
-        localStorage.getItem(languageStorageKey) ||
-        defaultLanguage;
+        localStorage.getItem("salentoExecutiveLanguage");
+
+    let currentLanguage =
+        supportedLanguages.includes(savedLanguage)
+            ? savedLanguage
+            : "it";
+
+
+    /* =================================================
+       APPLICA TRADUZIONI
+    ================================================= */
 
     function applyLanguage(language) {
 
-        if (
-            typeof translations === "undefined" ||
-            !translations[language]
-        ) {
-            return;
+        if (!supportedLanguages.includes(language)) {
+            language = "it";
         }
 
-        /* Lingua HTML */
-
-        document.documentElement.lang = language;
-
+        currentLanguage = language;
 
         /* Salva la lingua */
 
         localStorage.setItem(
-            languageStorageKey,
+            "salentoExecutiveLanguage",
             language
         );
 
 
-        /* Testi */
+        /* Aggiorna lang HTML */
+
+        document.documentElement.lang = language;
+
+
+        /* Recupera le traduzioni */
+
+        const languageTranslations =
+            translations[language];
+
+        if (!languageTranslations) {
+            return;
+        }
+
+
+        /* ---------------------------------------------
+           ELEMENTI CON data-i18n
+        --------------------------------------------- */
 
         document
             .querySelectorAll("[data-i18n]")
-            .forEach(element => {
+            .forEach((element) => {
 
                 const key =
                     element.getAttribute("data-i18n");
 
-                const value =
-                    translations[language][key];
-
-                if (value === undefined) {
-                    return;
-                }
-
                 if (
-                    element.hasAttribute("data-i18n-html")
+                    key &&
+                    languageTranslations[key] !== undefined
                 ) {
 
-                    element.innerHTML = value;
-
-                } else {
-
-                    element.textContent = value;
+                    element.textContent =
+                        languageTranslations[key];
 
                 }
 
             });
 
 
-        /* Placeholder */
+        /* ---------------------------------------------
+           ATTRIBUTI ARIA
+        --------------------------------------------- */
+
+        document
+            .querySelectorAll("[data-i18n-aria-label]")
+            .forEach((element) => {
+
+                const key =
+                    element.getAttribute(
+                        "data-i18n-aria-label"
+                    );
+
+                if (
+                    key &&
+                    languageTranslations[key] !== undefined
+                ) {
+
+                    element.setAttribute(
+                        "aria-label",
+                        languageTranslations[key]
+                    );
+
+                }
+
+            });
+
+
+        /* ---------------------------------------------
+           PLACEHOLDER
+        --------------------------------------------- */
 
         document
             .querySelectorAll("[data-i18n-placeholder]")
-            .forEach(element => {
+            .forEach((element) => {
 
                 const key =
                     element.getAttribute(
                         "data-i18n-placeholder"
                     );
 
-                const value =
-                    translations[language][key];
-
-                if (value !== undefined) {
+                if (
+                    key &&
+                    languageTranslations[key] !== undefined
+                ) {
 
                     element.setAttribute(
                         "placeholder",
-                        value
+                        languageTranslations[key]
                     );
 
                 }
@@ -97,44 +147,53 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
 
-        /* Selettore lingua */
+        /* ---------------------------------------------
+           SELETTORE LINGUA
+        --------------------------------------------- */
 
         document
-            .querySelectorAll("[data-language-current]")
-            .forEach(element => {
+            .querySelectorAll("[data-lang]")
+            .forEach((button) => {
 
-                element.textContent =
-                    language.toUpperCase();
+                const buttonLanguage =
+                    button.getAttribute("data-lang");
+
+                button.classList.toggle(
+                    "active",
+                    buttonLanguage === language
+                );
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(
+                        buttonLanguage === language
+                    )
+                );
 
             });
 
     }
 
 
-    /* Applica la lingua salvata */
-
-    applyLanguage(savedLanguage);
-
-
-    /* =====================================================
-       SELETTORE LINGUA
-    ===================================================== */
+    /* =================================================
+       GESTIONE SELETTORE LINGUA
+    ================================================= */
 
     document
-        .querySelectorAll("[data-language]")
-        .forEach(button => {
+        .querySelectorAll("[data-lang]")
+        .forEach((button) => {
 
-            button.addEventListener("click", event => {
+            button.addEventListener("click", (event) => {
 
                 event.preventDefault();
                 event.stopPropagation();
 
                 const language =
-                    button.getAttribute(
-                        "data-language"
-                    );
+                    button.getAttribute("data-lang");
 
-                if (!language) {
+                if (
+                    !supportedLanguages.includes(language)
+                ) {
                     return;
                 }
 
@@ -145,15 +204,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-    /* =====================================================
+    /* =================================================
+       APPLICA LA LINGUA SALVATA
+    ================================================= */
+
+    applyLanguage(currentLanguage);
+
+
+
+    /* =================================================
        MOBILE MENU
-    ===================================================== */
+    ================================================= */
 
     const menuButton =
         document.querySelector(".menu-button");
 
     const navigation =
         document.querySelector(".navigation");
+
 
     if (menuButton && navigation) {
 
@@ -162,26 +230,38 @@ document.addEventListener("DOMContentLoaded", () => {
             const isOpen =
                 navigation.classList.toggle("is-open");
 
+
             menuButton.setAttribute(
                 "aria-expanded",
                 String(isOpen)
             );
 
+
             menuButton.setAttribute(
                 "aria-label",
                 isOpen
-                    ? "Chiudi menu"
-                    : "Apri menu"
+                    ? (
+                        translations[currentLanguage]?.[
+                            "accessibility.closeMenu"
+                        ] || "Chiudi menu"
+                    )
+                    : (
+                        translations[currentLanguage]?.[
+                            "accessibility.openMenu"
+                        ] || "Apri menu"
+                    )
             );
 
         });
 
 
-        /* Chiude il menu quando viene cliccato un link */
+        /* ---------------------------------------------
+           CHIUDE MENU QUANDO SI CLICCA UN LINK
+        --------------------------------------------- */
 
         navigation
             .querySelectorAll("a")
-            .forEach(link => {
+            .forEach((link) => {
 
                 link.addEventListener("click", () => {
 
@@ -196,7 +276,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     menuButton.setAttribute(
                         "aria-label",
-                        "Apri menu"
+                        translations[currentLanguage]?.[
+                            "accessibility.openMenu"
+                        ] || "Apri menu"
                     );
 
                 });
@@ -204,9 +286,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
 
-        /* Chiude il menu cliccando fuori */
+        /* ---------------------------------------------
+           CHIUDE MENU CLICCANDO FUORI
+        --------------------------------------------- */
 
-        document.addEventListener("click", event => {
+        document.addEventListener("click", (event) => {
 
             if (
                 !navigation.contains(event.target) &&
@@ -224,7 +308,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 menuButton.setAttribute(
                     "aria-label",
-                    "Apri menu"
+                    translations[currentLanguage]?.[
+                        "accessibility.openMenu"
+                    ] || "Apri menu"
                 );
 
             }
@@ -234,9 +320,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
+
+    /* =================================================
        ANNO AUTOMATICO NEL FOOTER
-    ===================================================== */
+    ================================================= */
 
     const currentYear =
         document.querySelector("#current-year");
@@ -249,11 +336,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       CHIUSURA MENU CON ESC
-    ===================================================== */
 
-    document.addEventListener("keydown", event => {
+    /* =================================================
+       CHIUSURA MENU CON ESC
+    ================================================= */
+
+    document.addEventListener("keydown", (event) => {
 
         if (event.key !== "Escape") {
             return;
@@ -274,12 +362,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuButton.setAttribute(
             "aria-label",
-            "Apri menu"
+            translations[currentLanguage]?.[
+                "accessibility.openMenu"
+            ] || "Apri menu"
         );
 
     });
 
 });
+
 
 
 /* =====================================================
@@ -290,40 +381,86 @@ window.addEventListener("pageshow", () => {
 
     document.body.classList.remove("page-exit");
 
+    /*
+       Rilegge la lingua salvata quando la pagina
+       viene ripristinata dalla cache del browser.
+    */
+
+    const savedLanguage =
+        localStorage.getItem(
+            "salentoExecutiveLanguage"
+        );
+
+    if (
+        savedLanguage &&
+        typeof translations !== "undefined" &&
+        translations[savedLanguage]
+    ) {
+
+        document.documentElement.lang =
+            savedLanguage;
+
+    }
+
 });
+
 
 
 /* =====================================================
    TRANSIZIONE TRA LE PAGINE
 ===================================================== */
 
-document.querySelectorAll("a").forEach(link => {
+document.querySelectorAll("a").forEach((link) => {
 
-    /* Non applicare la transizione al selettore lingua */
+    /* Link esclusi dalla transizione */
 
     if (
-        link.classList.contains("no-transition") ||
-        link.hasAttribute("data-language")
+        link.classList.contains("no-transition")
     ) {
         return;
     }
 
+
     const url =
         link.getAttribute("href");
+
+
+    /* Ignora link esterni, anchor e vuoti */
 
     if (
         url &&
         !url.startsWith("http") &&
-        !url.startsWith("#")
+        !url.startsWith("#") &&
+        !url.startsWith("mailto:") &&
+        !url.startsWith("tel:")
     ) {
 
-        link.addEventListener("click", function(e) {
+        link.addEventListener("click", function (event) {
 
-            e.preventDefault();
+            /*
+               Se il link è stato già gestito
+               dal browser o da un altro sistema,
+               non interferiamo.
+            */
+
+            if (
+                event.ctrlKey ||
+                event.metaKey ||
+                event.shiftKey ||
+                event.altKey ||
+                event.button !== 0
+            ) {
+                return;
+            }
+
+
+            event.preventDefault();
+
 
             document.body.classList.add(
                 "page-exit"
             );
+
 
             setTimeout(() => {
 
