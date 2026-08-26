@@ -5,7 +5,7 @@
 
 
 /* =====================================================
-   TRADUZIONI
+   DOM READY
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,13 +18,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       LINGUA
+       LINGUE SUPPORTATE
     ================================================= */
 
-    const supportedLanguages = ["it", "en", "fr", "es", "de"];
+    const supportedLanguages = [
+        "it",
+        "en",
+        "fr",
+        "es",
+        "de"
+    ];
+
+
+    /* =================================================
+       LINGUA SALVATA
+    ================================================= */
 
     const savedLanguage =
-        localStorage.getItem("salentoExecutiveLanguage");
+        localStorage.getItem(
+            "salentoExecutiveLanguage"
+        );
 
     let currentLanguage =
         supportedLanguages.includes(savedLanguage)
@@ -32,38 +45,57 @@ document.addEventListener("DOMContentLoaded", () => {
             : "it";
 
 
-/* =================================================
-   APPLICA TRADUZIONI
-================================================= */
+    /* =================================================
+       ELEMENTI GLOBALI
+    ================================================= */
 
-function applyLanguage(language) {
+    const menuButton =
+        document.querySelector(".menu-button");
 
-    if (!supportedLanguages.includes(language)) {
-        language = "it";
-    }
+    const navigation =
+        document.querySelector(".navigation");
 
-    currentLanguage = language;
+    const languageSelector =
+        document.querySelector(".language-selector");
 
     const languageButton =
         document.querySelector(".language-button");
 
-    if (languageButton) {
-        languageButton.textContent =
-            language.toUpperCase();
-    }
-
-    /* Salva la lingua */
-
-    localStorage.setItem(
-        "salentoExecutiveLanguage",
-        language
-    );
-        /* Aggiorna lang HTML */
-
-        document.documentElement.lang = language;
+    const languageMenu =
+        document.querySelector(".language-menu");
 
 
-        /* Recupera le traduzioni */
+    /* =================================================
+       APPLICA TRADUZIONI
+    ================================================= */
+
+    function applyLanguage(language) {
+
+        /* Lingua valida */
+
+        if (!supportedLanguages.includes(language)) {
+            language = "it";
+        }
+
+
+        currentLanguage = language;
+
+
+        /* Salva la lingua */
+
+        localStorage.setItem(
+            "salentoExecutiveLanguage",
+            language
+        );
+
+
+        /* Aggiorna attributo HTML */
+
+        document.documentElement.lang =
+            language;
+
+
+        /* Recupera traduzioni */
 
         const languageTranslations =
             translations[language];
@@ -74,7 +106,7 @@ function applyLanguage(language) {
 
 
         /* ---------------------------------------------
-           ELEMENTI CON data-i18n
+           TESTI
         --------------------------------------------- */
 
         document
@@ -82,7 +114,9 @@ function applyLanguage(language) {
             .forEach((element) => {
 
                 const key =
-                    element.getAttribute("data-i18n");
+                    element.getAttribute(
+                        "data-i18n"
+                    );
 
                 if (
                     key &&
@@ -98,7 +132,7 @@ function applyLanguage(language) {
 
 
         /* ---------------------------------------------
-           ATTRIBUTI ARIA
+           ARIA LABEL
         --------------------------------------------- */
 
         document
@@ -154,7 +188,19 @@ function applyLanguage(language) {
 
 
         /* ---------------------------------------------
-           SELETTORE LINGUA
+           PULSANTE LINGUA
+        --------------------------------------------- */
+
+        if (languageButton) {
+
+            languageButton.textContent =
+                language.toUpperCase();
+
+        }
+
+
+        /* ---------------------------------------------
+           LINGUA ATTIVA
         --------------------------------------------- */
 
         document
@@ -162,18 +208,126 @@ function applyLanguage(language) {
             .forEach((button) => {
 
                 const buttonLanguage =
-                    button.getAttribute("data-lang");
+                    button.getAttribute(
+                        "data-lang"
+                    );
+
+                const isActive =
+                    buttonLanguage === language;
+
 
                 button.classList.toggle(
                     "active",
-                    buttonLanguage === language
+                    isActive
                 );
+
 
                 button.setAttribute(
                     "aria-pressed",
-                    String(
-                        buttonLanguage === language
+                    String(isActive)
+                );
+
+            });
+
+
+        /* ---------------------------------------------
+           ARIA MENU MOBILE
+        --------------------------------------------- */
+
+        if (menuButton && navigation) {
+
+            const isMenuOpen =
+                navigation.classList.contains(
+                    "is-open"
+                );
+
+
+            menuButton.setAttribute(
+                "aria-label",
+                isMenuOpen
+                    ? (
+                        languageTranslations[
+                            "accessibility.closeMenu"
+                        ] || "Chiudi menu"
                     )
+                    : (
+                        languageTranslations[
+                            "accessibility.openMenu"
+                        ] || "Apri menu"
+                    )
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
+       SELETTORE LINGUA
+    ================================================= */
+
+    if (
+        languageSelector &&
+        languageButton &&
+        languageMenu
+    ) {
+
+        /* Apertura / chiusura */
+
+        languageButton.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                languageSelector.classList.toggle(
+                    "is-open"
+                );
+
+            }
+        );
+
+
+        /* Selezione lingua */
+
+        languageMenu
+            .querySelectorAll("[data-lang]")
+            .forEach((button) => {
+
+                button.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+
+                        const language =
+                            button.getAttribute(
+                                "data-lang"
+                            );
+
+
+                        if (
+                            !supportedLanguages.includes(
+                                language
+                            )
+                        ) {
+                            return;
+                        }
+
+
+                        applyLanguage(
+                            language
+                        );
+
+
+                        languageSelector.classList.remove(
+                            "is-open"
+                        );
+
+                    }
                 );
 
             });
@@ -182,191 +336,127 @@ function applyLanguage(language) {
 
 
     /* =================================================
-       GESTIONE SELETTORE LINGUA
+       MENU MOBILE
     ================================================= */
 
-    document
-        .querySelectorAll("[data-lang]")
-        .forEach((button) => {
+    if (
+        menuButton &&
+        navigation
+    ) {
 
-            button.addEventListener("click", (event) => {
+        /* Apertura menu */
 
-                event.preventDefault();
+        menuButton.addEventListener(
+            "click",
+            (event) => {
+
                 event.stopPropagation();
 
-                const language =
-                    button.getAttribute("data-lang");
 
-                if (
-                    !supportedLanguages.includes(language)
-                ) {
-                    return;
-                }
-
-                applyLanguage(language);
-
-            });
-
-        });
+                const isOpen =
+                    navigation.classList.toggle(
+                        "is-open"
+                    );
 
 
-    /* =================================================
-       APPLICA LA LINGUA SALVATA
-    ================================================= */
-
-    applyLanguage(currentLanguage);
-
-
-/* =================================================
-   SELETTORE LINGUA
-================================================= */
-
-const languageSelector =
-    document.querySelector(".language-selector");
-
-const languageButton =
-    document.querySelector(".language-button");
-
-const languageMenu =
-    document.querySelector(".language-menu");
-
-
-if (
-    languageSelector &&
-    languageButton &&
-    languageMenu
-) {
-
-    languageButton.addEventListener("click", (event) => {
-
-        event.stopPropagation();
-
-        languageSelector.classList.toggle("is-open");
-
-    });
-
-
-    languageMenu
-        .querySelectorAll("[data-lang]")
-        .forEach((button) => {
-
-            button.addEventListener("click", () => {
-
-                const language =
-                    button.getAttribute("data-lang");
-
-                applyLanguage(language);
-
-                languageButton.textContent =
-                    language.toUpperCase();
-
-                languageSelector.classList.remove(
-                    "is-open"
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
                 );
 
-            });
 
-        });
-
-
-    document.addEventListener("click", (event) => {
-
-        if (!languageSelector.contains(event.target)) {
-
-            languageSelector.classList.remove(
-                "is-open"
-            );
-
-        }
-
-    });
+                const languageTranslations =
+                    translations[currentLanguage] || {};
 
 
-    languageButton.textContent =
-        currentLanguage.toUpperCase();
+                menuButton.setAttribute(
+                    "aria-label",
+                    isOpen
+                        ? (
+                            languageTranslations[
+                                "accessibility.closeMenu"
+                            ] || "Chiudi menu"
+                        )
+                        : (
+                            languageTranslations[
+                                "accessibility.openMenu"
+                            ] || "Apri menu"
+                        )
+                );
 
-}
-    /* =================================================
-       MOBILE MENU
-    ================================================= */
-
-    const menuButton =
-        document.querySelector(".menu-button");
-
-    const navigation =
-        document.querySelector(".navigation");
-
-
-    if (menuButton && navigation) {
-
-        menuButton.addEventListener("click", () => {
-
-            const isOpen =
-                navigation.classList.toggle("is-open");
+            }
+        );
 
 
-            menuButton.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-
-            menuButton.setAttribute(
-                "aria-label",
-                isOpen
-                    ? (
-                        translations[currentLanguage]?.[
-                            "accessibility.closeMenu"
-                        ] || "Chiudi menu"
-                    )
-                    : (
-                        translations[currentLanguage]?.[
-                            "accessibility.openMenu"
-                        ] || "Apri menu"
-                    )
-            );
-
-        });
-
-
-        /* ---------------------------------------------
-           CHIUDE MENU QUANDO SI CLICCA UN LINK
-        --------------------------------------------- */
+        /* Chiudi menu cliccando un link */
 
         navigation
             .querySelectorAll("a")
             .forEach((link) => {
 
-                link.addEventListener("click", () => {
+                link.addEventListener(
+                    "click",
+                    () => {
 
-                    navigation.classList.remove(
-                        "is-open"
-                    );
+                        navigation.classList.remove(
+                            "is-open"
+                        );
 
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
 
-                    menuButton.setAttribute(
-                        "aria-label",
-                        translations[currentLanguage]?.[
-                            "accessibility.openMenu"
-                        ] || "Apri menu"
-                    );
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
 
-                });
+
+                        const languageTranslations =
+                            translations[currentLanguage] || {};
+
+
+                        menuButton.setAttribute(
+                            "aria-label",
+                            languageTranslations[
+                                "accessibility.openMenu"
+                            ] || "Apri menu"
+                        );
+
+                    }
+                );
 
             });
 
+    }
 
-        /* ---------------------------------------------
-           CHIUDE MENU CLICCANDO FUORI
-        --------------------------------------------- */
 
-        document.addEventListener("click", (event) => {
+    /* =================================================
+       CLICK FUORI
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            /* Chiudi selettore lingua */
 
             if (
+                languageSelector &&
+                !languageSelector.contains(
+                    event.target
+                )
+            ) {
+
+                languageSelector.classList.remove(
+                    "is-open"
+                );
+
+            }
+
+
+            /* Chiudi menu mobile */
+
+            if (
+                navigation &&
+                menuButton &&
                 !navigation.contains(event.target) &&
                 !menuButton.contains(event.target)
             ) {
@@ -375,32 +465,98 @@ if (
                     "is-open"
                 );
 
+
                 menuButton.setAttribute(
                     "aria-expanded",
                     "false"
                 );
 
+
+                const languageTranslations =
+                    translations[currentLanguage] || {};
+
+
                 menuButton.setAttribute(
                     "aria-label",
-                    translations[currentLanguage]?.[
+                    languageTranslations[
                         "accessibility.openMenu"
                     ] || "Apri menu"
                 );
 
             }
 
-        });
-
-    }
-
+        }
+    );
 
 
     /* =================================================
-       ANNO AUTOMATICO NEL FOOTER
+       CHIUSURA CON ESC
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (event.key !== "Escape") {
+                return;
+            }
+
+
+            /* Chiudi lingua */
+
+            if (languageSelector) {
+
+                languageSelector.classList.remove(
+                    "is-open"
+                );
+
+            }
+
+
+            /* Chiudi menu */
+
+            if (
+                navigation &&
+                menuButton
+            ) {
+
+                navigation.classList.remove(
+                    "is-open"
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                const languageTranslations =
+                    translations[currentLanguage] || {};
+
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    languageTranslations[
+                        "accessibility.openMenu"
+                    ] || "Apri menu"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       ANNO AUTOMATICO
     ================================================= */
 
     const currentYear =
-        document.querySelector("#current-year");
+        document.querySelector(
+            "#current-year"
+        );
+
 
     if (currentYear) {
 
@@ -410,140 +566,123 @@ if (
     }
 
 
-
     /* =================================================
-       CHIUSURA MENU CON ESC
+       APPLICA LINGUA INIZIALE
     ================================================= */
 
-    document.addEventListener("keydown", (event) => {
-
-        if (event.key !== "Escape") {
-            return;
-        }
-
-        if (!navigation || !menuButton) {
-            return;
-        }
-
-        navigation.classList.remove(
-            "is-open"
-        );
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-        menuButton.setAttribute(
-            "aria-label",
-            translations[currentLanguage]?.[
-                "accessibility.openMenu"
-            ] || "Apri menu"
-        );
-
-    });
+    applyLanguage(
+        currentLanguage
+    );
 
 });
-
 
 
 /* =====================================================
    BACK / FORWARD BROWSER
 ===================================================== */
 
-window.addEventListener("pageshow", () => {
+window.addEventListener(
+    "pageshow",
+    () => {
 
-    document.body.classList.remove("page-exit");
-
-    /*
-       Rilegge la lingua salvata quando la pagina
-       viene ripristinata dalla cache del browser.
-    */
-
-    const savedLanguage =
-        localStorage.getItem(
-            "salentoExecutiveLanguage"
+        document.body.classList.remove(
+            "page-exit"
         );
 
-    if (
-        savedLanguage &&
-        typeof translations !== "undefined" &&
-        translations[savedLanguage]
-    ) {
 
-        document.documentElement.lang =
-            savedLanguage;
+        const savedLanguage =
+            localStorage.getItem(
+                "salentoExecutiveLanguage"
+            );
+
+
+        if (
+            savedLanguage &&
+            typeof translations !== "undefined" &&
+            translations[savedLanguage]
+        ) {
+
+            document.documentElement.lang =
+                savedLanguage;
+
+        }
 
     }
-
-});
-
+);
 
 
 /* =====================================================
    TRANSIZIONE TRA LE PAGINE
 ===================================================== */
 
-document.querySelectorAll("a").forEach((link) => {
+document
+    .querySelectorAll("a")
+    .forEach((link) => {
 
-    /* Link esclusi dalla transizione */
+        /* Link esclusi */
 
-    if (
-        link.classList.contains("no-transition")
-    ) {
-        return;
-    }
-
-
-    const url =
-        link.getAttribute("href");
+        if (
+            link.classList.contains(
+                "no-transition"
+            )
+        ) {
+            return;
+        }
 
 
-    /* Ignora link esterni, anchor e vuoti */
+        const url =
+            link.getAttribute("href");
 
-    if (
-        url &&
-        !url.startsWith("http") &&
-        !url.startsWith("#") &&
-        !url.startsWith("mailto:") &&
-        !url.startsWith("tel:")
-    ) {
 
-        link.addEventListener("click", function (event) {
+        /* Ignora link non compatibili */
 
-            /*
-               Se il link è stato già gestito
-               dal browser o da un altro sistema,
-               non interferiamo.
-            */
+        if (
+            !url ||
+            url.startsWith("http") ||
+            url.startsWith("#") ||
+            url.startsWith("mailto:") ||
+            url.startsWith("tel:")
+        ) {
+            return;
+        }
 
-            if (
-                event.ctrlKey ||
-                event.metaKey ||
-                event.shiftKey ||
-                event.altKey ||
-                event.button !== 0
-            ) {
-                return;
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                /* Tasti modificatori */
+
+                if (
+                    event.ctrlKey ||
+                    event.metaKey ||
+                    event.shiftKey ||
+                    event.altKey ||
+                    event.button !== 0
+                ) {
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                document.body.classList.add(
+                    "page-exit"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        window.location.href =
+                            url;
+
+                    },
+                    300
+                );
+
             }
+        );
 
-
-            event.preventDefault();
-
-
-            document.body.classList.add(
-                "page-exit"
-            );
-
-
-            setTimeout(() => {
-
-                window.location.href = url;
-
-            }, 300);
-
-        });
-
-    }
-
-});
+    });
