@@ -64,6 +64,47 @@ const translations = {
         "accessibility.openMenu": "Apri menu",
         "accessibility.closeMenu": "Chiudi menu",
         "accessibility.whatsapp": "Contattaci su WhatsApp"
+            
+        /* =====================================================
+   PAGINA SERVIZI — ITALIANO
+===================================================== */
+
+"servicesPage.hero.eyebrow": "I NOSTRI SERVIZI",
+"servicesPage.hero.title": "Ogni viaggio, con il giusto servizio.",
+"servicesPage.hero.description": "Soluzioni di trasporto private pensate per accompagnarti con comfort, puntualità e discrezione, qualunque sia la tua destinazione.",
+"servicesPage.hero.book": "Richiedi una prenotazione",
+"servicesPage.hero.contact": "Contattaci",
+"servicesPage.hero.visualTitle": "Servizi",
+
+"servicesPage.intro.eyebrow": "PENSATI PER LE TUE ESIGENZE",
+"servicesPage.intro.title": "La soluzione giusta per ogni viaggio.",
+"servicesPage.intro.description": "Dall'aeroporto alla tua destinazione, da un appuntamento di lavoro a una giornata alla scoperta del Salento: organizziamo il tuo trasferimento in modo semplice e professionale.",
+
+"servicesPage.services.eyebrow": "I SERVIZI",
+"servicesPage.services.title": "Scegli la soluzione più adatta a te.",
+
+"servicesPage.private.title": "Transfer privati",
+"servicesPage.private.description": "Spostamenti riservati e confortevoli verso la tua destinazione, con un servizio organizzato sulle tue necessità.",
+
+"servicesPage.airport.title": "Transfer aeroportuali",
+"servicesPage.airport.description": "Collegamenti privati da e verso gli aeroporti di Brindisi e Bari, organizzati secondo i tuoi orari di viaggio.",
+
+"servicesPage.experience.eyebrow": "IL NOSTRO APPROCCIO",
+"servicesPage.experience.title": "Più attenzione, meno pensieri.",
+"servicesPage.experience.punctuality.description": "Organizziamo ogni trasferimento prestando attenzione agli orari.",
+"servicesPage.experience.comfort.description": "Un ambiente pensato per rendere piacevole anche il viaggio più lungo.",
+"servicesPage.experience.professionalism.description": "Un servizio discreto e attento durante ogni spostamento.",
+"servicesPage.experience.flexibility.description": "Soluzioni organizzate in base alle esigenze del tuo viaggio.",
+
+"servicesPage.territory.eyebrow": "SALENTO & PUGLIA",
+"servicesPage.territory.title": "La tua destinazione. Il nostro percorso.",
+"servicesPage.territory.description": "Dal Salento alle principali destinazioni della Puglia, il nostro servizio è pensato per accompagnarti dove desideri arrivare, con la libertà di un trasferimento privato.",
+
+"servicesPage.cta.title": "Hai già una destinazione?",
+"servicesPage.cta.description": "Raccontaci dove vuoi andare e organizziamo il tuo trasferimento.",
+
+
+
     },
 
 
@@ -131,6 +172,47 @@ const translations = {
         "accessibility.openMenu": "Open menu",
         "accessibility.closeMenu": "Close menu",
         "accessibility.whatsapp": "Contact us on WhatsApp"
+
+        /* =====================================================
+   PAGINA SERVIZI — ENGLISH
+===================================================== */
+
+"servicesPage.hero.eyebrow": "OUR SERVICES",
+"servicesPage.hero.title": "Every journey, with the right service.",
+"servicesPage.hero.description": "Private transport solutions designed to accompany you with comfort, punctuality and discretion, wherever your destination may be.",
+"servicesPage.hero.book": "Request a booking",
+"servicesPage.hero.contact": "Contact us",
+"servicesPage.hero.visualTitle": "Services",
+
+"servicesPage.intro.eyebrow": "DESIGNED AROUND YOUR NEEDS",
+"servicesPage.intro.title": "The right solution for every journey.",
+"servicesPage.intro.description": "From the airport to your destination, from a business appointment to a day discovering Salento: we organise your transfer simply and professionally.",
+
+"servicesPage.services.eyebrow": "OUR SERVICES",
+"servicesPage.services.title": "Choose the solution that suits you best.",
+
+"servicesPage.private.title": "Private transfers",
+"servicesPage.private.description": "Private and comfortable journeys to your destination, with a service organised around your needs.",
+
+"servicesPage.airport.title": "Airport transfers",
+"servicesPage.airport.description": "Private transfers to and from Brindisi and Bari airports, organised around your travel schedule.",
+
+"servicesPage.experience.eyebrow": "OUR APPROACH",
+"servicesPage.experience.title": "More attention, less to worry about.",
+"servicesPage.experience.punctuality.description": "We organise every transfer with careful attention to timing.",
+"servicesPage.experience.comfort.description": "An environment designed to make even longer journeys enjoyable.",
+"servicesPage.experience.professionalism.description": "An attentive and discreet service throughout every journey.",
+"servicesPage.experience.flexibility.description": "Solutions organised around your travel needs.",
+
+"servicesPage.territory.eyebrow": "SALENTO & PUGLIA",
+"servicesPage.territory.title": "Your destination. Our journey.",
+"servicesPage.territory.description": "From Salento to the main destinations across Puglia, our service is designed to take you wherever you want to go, with the freedom of a private transfer.",
+
+"servicesPage.cta.title": "Already have a destination in mind?",
+"servicesPage.cta.description": "Tell us where you want to go and we will organise your transfer.",
+
+
+
     },
 
 
@@ -198,6 +280,45 @@ const translations = {
         "accessibility.openMenu": "Ouvrir le menu",
         "accessibility.closeMenu": "Fermer le menu",
         "accessibility.whatsapp": "Nous contacter sur WhatsApp"
+
+    /* =====================================================
+   PAGINA SERVIZI — FRANÇAIS
+===================================================== */
+
+"servicesPage.hero.eyebrow": "NOS SERVICES",
+"servicesPage.hero.title": "Chaque voyage, avec le service adapté.",
+"servicesPage.hero.description": "Des solutions de transport privées conçues pour vous accompagner avec confort, ponctualité et discrétion, quelle que soit votre destination.",
+"servicesPage.hero.book": "Demander une réservation",
+"servicesPage.hero.contact": "Nous contacter",
+"servicesPage.hero.visualTitle": "Services",
+
+"servicesPage.intro.eyebrow": "PENSÉS POUR VOS BESOINS",
+"servicesPage.intro.title": "La solution adaptée à chaque voyage.",
+"servicesPage.intro.description": "De l'aéroport à votre destination, d'un rendez-vous professionnel à une journée à la découverte du Salento : nous organisons votre transfert de manière simple et professionnelle.",
+
+"servicesPage.services.eyebrow": "NOS SERVICES",
+"servicesPage.services.title": "Choisissez la solution qui vous convient.",
+
+"servicesPage.private.title": "Transferts privés",
+"servicesPage.private.description": "Des déplacements privés et confortables vers votre destination, avec un service organisé selon vos besoins.",
+
+"servicesPage.airport.title": "Transferts aéroport",
+"servicesPage.airport.description": "Des transferts privés depuis et vers les aéroports de Brindisi et Bari, organisés selon vos horaires de voyage.",
+
+"servicesPage.experience.eyebrow": "NOTRE APPROCHE",
+"servicesPage.experience.title": "Plus d'attention, moins de soucis.",
+"servicesPage.experience.punctuality.description": "Nous organisons chaque transfert avec une attention particulière aux horaires.",
+"servicesPage.experience.comfort.description": "Un environnement pensé pour rendre agréable même les trajets les plus longs.",
+"servicesPage.experience.professionalism.description": "Un service attentif et discret à chaque déplacement.",
+"servicesPage.experience.flexibility.description": "Des solutions organisées selon les besoins de votre voyage.",
+
+"servicesPage.territory.eyebrow": "SALENTO & POUILLES",
+"servicesPage.territory.title": "Votre destination. Notre parcours.",
+"servicesPage.territory.description": "Du Salento aux principales destinations des Pouilles, notre service est conçu pour vous accompagner où vous souhaitez aller, avec la liberté d'un transfert privé.",
+
+"servicesPage.cta.title": "Vous avez déjà une destination ?",
+"servicesPage.cta.description": "Indiquez-nous où vous souhaitez aller et nous organiserons votre transfert.",
+    
     },
 
 
@@ -265,6 +386,44 @@ const translations = {
         "accessibility.openMenu": "Abrir menú",
         "accessibility.closeMenu": "Cerrar menú",
         "accessibility.whatsapp": "Contactarnos por WhatsApp"
+
+        /* =====================================================
+   PAGINA SERVIZI — ESPAÑOL
+===================================================== */
+
+"servicesPage.hero.eyebrow": "NUESTROS SERVICIOS",
+"servicesPage.hero.title": "Cada viaje, con el servicio adecuado.",
+"servicesPage.hero.description": "Soluciones de transporte privadas pensadas para acompañarte con comodidad, puntualidad y discreción, sea cual sea tu destino.",
+"servicesPage.hero.book": "Solicitar una reserva",
+"servicesPage.hero.contact": "Contáctanos",
+"servicesPage.hero.visualTitle": "Servicios",
+
+"servicesPage.intro.eyebrow": "PENSADOS PARA TUS NECESIDADES",
+"servicesPage.intro.title": "La solución adecuada para cada viaje.",
+"servicesPage.intro.description": "Del aeropuerto a tu destino, de una cita de trabajo a un día descubriendo el Salento: organizamos tu traslado de forma sencilla y profesional.",
+
+"servicesPage.services.eyebrow": "NUESTROS SERVICIOS",
+"servicesPage.services.title": "Elige la solución más adecuada para ti.",
+
+"servicesPage.private.title": "Traslados privados",
+"servicesPage.private.description": "Desplazamientos privados y cómodos hacia tu destino, con un servicio organizado según tus necesidades.",
+
+"servicesPage.airport.title": "Traslados al aeropuerto",
+"servicesPage.airport.description": "Traslados privados desde y hacia los aeropuertos de Brindisi y Bari, organizados según tus horarios de viaje.",
+
+"servicesPage.experience.eyebrow": "NUESTRO ENFOQUE",
+"servicesPage.experience.title": "Más atención, menos preocupaciones.",
+"servicesPage.experience.punctuality.description": "Organizamos cada traslado prestando especial atención a los horarios.",
+"servicesPage.experience.comfort.description": "Un entorno pensado para hacer agradable incluso el viaje más largo.",
+"servicesPage.experience.professionalism.description": "Un servicio atento y discreto durante cada desplazamiento.",
+"servicesPage.experience.flexibility.description": "Soluciones organizadas según las necesidades de tu viaje.",
+
+"servicesPage.territory.eyebrow": "SALENTO Y APULIA",
+"servicesPage.territory.title": "Tu destino. Nuestro recorrido.",
+"servicesPage.territory.description": "Desde el Salento hasta los principales destinos de Apulia, nuestro servicio está pensado para llevarte donde quieras, con la libertad de un traslado privado.",
+
+"servicesPage.cta.title": "¿Ya tienes un destino?",
+"servicesPage.cta.description": "Dinos adónde quieres ir y organizaremos tu traslado.",
     },
 
 
@@ -332,6 +491,44 @@ const translations = {
         "accessibility.openMenu": "Menü öffnen",
         "accessibility.closeMenu": "Menü schließen",
         "accessibility.whatsapp": "Kontakt über WhatsApp"
+
+        /* =====================================================
+   PAGINA SERVIZI — DEUTSCH
+===================================================== */
+
+"servicesPage.hero.eyebrow": "UNSERE DIENSTLEISTUNGEN",
+"servicesPage.hero.title": "Jede Reise, mit dem passenden Service.",
+"servicesPage.hero.description": "Private Transportlösungen, die Ihnen Komfort, Pünktlichkeit und Diskretion bieten – ganz gleich, wohin Ihre Reise geht.",
+"servicesPage.hero.book": "Buchung anfragen",
+"servicesPage.hero.contact": "Kontaktieren Sie uns",
+"servicesPage.hero.visualTitle": "Dienstleistungen",
+
+"servicesPage.intro.eyebrow": "AUF IHRE BEDÜRFNISSE ABGESTIMMT",
+"servicesPage.intro.title": "Die passende Lösung für jede Reise.",
+"servicesPage.intro.description": "Vom Flughafen zu Ihrem Ziel, von einem Geschäftstermin bis zu einem Tag im Salento: Wir organisieren Ihren Transfer einfach und professionell.",
+
+"servicesPage.services.eyebrow": "UNSERE DIENSTLEISTUNGEN",
+"servicesPage.services.title": "Wählen Sie die passende Lösung für Sie.",
+
+"servicesPage.private.title": "Private Transfers",
+"servicesPage.private.description": "Komfortable und private Fahrten zu Ihrem Ziel, mit einem Service, der auf Ihre Bedürfnisse abgestimmt ist.",
+
+"servicesPage.airport.title": "Flughafentransfers",
+"servicesPage.airport.description": "Private Transfers von und zu den Flughäfen Brindisi und Bari, abgestimmt auf Ihren Reiseplan.",
+
+"servicesPage.experience.eyebrow": "UNSER ANSATZ",
+"servicesPage.experience.title": "Mehr Aufmerksamkeit, weniger Sorgen.",
+"servicesPage.experience.punctuality.description": "Wir organisieren jeden Transfer mit besonderem Augenmerk auf die Zeiten.",
+"servicesPage.experience.comfort.description": "Eine Umgebung, die auch längere Fahrten angenehm macht.",
+"servicesPage.experience.professionalism.description": "Ein aufmerksamer und diskreter Service bei jeder Fahrt.",
+"servicesPage.experience.flexibility.description": "Lösungen, die auf die Bedürfnisse Ihrer Reise abgestimmt sind.",
+
+"servicesPage.territory.eyebrow": "SALENTO & APULIEN",
+"servicesPage.territory.title": "Ihr Ziel. Unser Weg.",
+"servicesPage.territory.description": "Vom Salento zu den wichtigsten Zielen Apuliens: Unser Service bringt Sie dorthin, wo Sie hinmöchten – mit der Freiheit eines privaten Transfers.",
+
+"servicesPage.cta.title": "Haben Sie bereits ein Ziel?",
+"servicesPage.cta.description": "Teilen Sie uns mit, wohin Sie möchten, und wir organisieren Ihren Transfer."
     }
 
 };
