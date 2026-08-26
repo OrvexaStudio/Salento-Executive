@@ -32,26 +32,32 @@ document.addEventListener("DOMContentLoaded", () => {
             : "it";
 
 
-    /* =================================================
-       APPLICA TRADUZIONI
-    ================================================= */
+/* =================================================
+   APPLICA TRADUZIONI
+================================================= */
 
-    function applyLanguage(language) {
+function applyLanguage(language) {
 
-        if (!supportedLanguages.includes(language)) {
-            language = "it";
-        }
+    if (!supportedLanguages.includes(language)) {
+        language = "it";
+    }
 
-        currentLanguage = language;
+    currentLanguage = language;
 
-        /* Salva la lingua */
+    const languageButton =
+        document.querySelector(".language-button");
 
-        localStorage.setItem(
-            "salentoExecutiveLanguage",
-            language
-        );
+    if (languageButton) {
+        languageButton.textContent =
+            language.toUpperCase();
+    }
 
+    /* Salva la lingua */
 
+    localStorage.setItem(
+        "salentoExecutiveLanguage",
+        language
+    );
         /* Aggiorna lang HTML */
 
         document.documentElement.lang = language;
