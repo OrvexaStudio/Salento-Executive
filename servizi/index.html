@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -31,52 +32,56 @@
             >
         </a>
 
-<nav class="navigation">
+        <nav class="navigation">
 
-    <a href="../servizi/">Servizi</a>
-
-    <a href="../trasferimenti/">Trasferimenti</a>
-
-
-    <div class="dropdown">
-
-        <a href="#" class="dropdown-toggle">
-            Aeroporti
-        </a>
-
-
-        <div class="dropdown-menu">
-
-            <a href="../aeroporto-brindisi/">
-                Aeroporto di Brindisi
+            <a href="../servizi/" data-i18n="nav.services">
+                Servizi
             </a>
 
-
-            <a href="../aeroporto-bari/">
-                Aeroporto di Bari
+            <a href="../trasferimenti/" data-i18n="nav.transfers">
+                Trasferimenti
             </a>
 
-        </div>
+            <div class="dropdown">
 
-    </div>
+                <a href="#" class="dropdown-toggle" data-i18n="nav.airports">
+                    Aeroporti
+                </a>
 
+                <div class="dropdown-menu">
 
-    <a href="../chi-siamo/">Chi siamo</a>
+                    <a href="../aeroporto-brindisi/" data-i18n="nav.brindisi">
+                        Aeroporto di Brindisi
+                    </a>
 
-    <a href="../contatti/">Contatti</a>
+                    <a href="../aeroporto-bari/" data-i18n="nav.bari">
+                        Aeroporto di Bari
+                    </a>
 
+                </div>
 
-    <a href="../prenota/" class="nav-button">
-        Prenota
-    </a>
+            </div>
 
-</nav>
+            <a href="../chi-siamo/" data-i18n="nav.about">
+                Chi siamo
+            </a>
+
+            <a href="../contatti/" data-i18n="nav.contact">
+                Contatti
+            </a>
+
+            <a href="../prenota/" class="nav-button" data-i18n="nav.book">
+                Prenota
+            </a>
+
+        </nav>
 
         <button
             class="menu-button"
             type="button"
             aria-label="Apri menu"
             aria-expanded="false"
+            data-i18n-aria-label="accessibility.openMenu"
         >
             <span></span>
             <span></span>
@@ -98,16 +103,16 @@
 
             <div class="hero-text">
 
-                <p class="eyebrow">
+                <p class="eyebrow" data-i18n="servicesPage.hero.eyebrow">
                     I NOSTRI SERVIZI
                 </p>
 
-                <h1>
+                <h1 data-i18n="servicesPage.hero.title">
                     Ogni viaggio,
-                    <em>con il giusto servizio.</em>
+                    con il giusto servizio.
                 </h1>
 
-                <p class="hero-description">
+                <p class="hero-description" data-i18n="servicesPage.hero.description">
                     Soluzioni di trasporto private pensate per
                     accompagnarti con comfort, puntualità e
                     discrezione, qualunque sia la tua destinazione.
@@ -118,6 +123,7 @@
                     <a
                         href="../prenota/"
                         class="button button-dark"
+                        data-i18n="servicesPage.hero.book"
                     >
                         Richiedi una prenotazione
                     </a>
@@ -125,6 +131,7 @@
                     <a
                         href="../contatti/"
                         class="button button-light"
+                        data-i18n="servicesPage.hero.contact"
                     >
                         Contattaci
                     </a>
@@ -140,17 +147,20 @@
 
                     <div class="hero-frame-content">
 
-                        <span class="hero-label">
+                        <span
+                            class="hero-label"
+                            data-i18n="hero.privateDriver"
+                        >
                             PRIVATE DRIVER
                         </span>
 
                         <div class="hero-line"></div>
 
-                        <h2>
+                        <h2 data-i18n="servicesPage.hero.visualTitle">
                             Servizi
                         </h2>
 
-                        <p>
+                        <p data-i18n="hero.comfort">
                             comfort · discrezione · puntualità
                         </p>
 
@@ -173,15 +183,15 @@
 
             <div class="intro-content">
 
-                <p class="eyebrow">
+                <p class="eyebrow" data-i18n="servicesPage.intro.eyebrow">
                     PENSATI PER LE TUE ESIGENZE
                 </p>
 
-                <h2>
+                <h2 data-i18n="servicesPage.intro.title">
                     La soluzione giusta per ogni viaggio.
                 </h2>
 
-                <p>
+                <p data-i18n="servicesPage.intro.description">
                     Dall'aeroporto alla tua destinazione, da un
                     appuntamento di lavoro a una giornata alla
                     scoperta del Salento: organizziamo il tuo
@@ -205,11 +215,11 @@
 
                 <div>
 
-                    <p class="eyebrow">
+                    <p class="eyebrow" data-i18n="servicesPage.services.eyebrow">
                         I SERVIZI
                     </p>
 
-                    <h2>
+                    <h2 data-i18n="servicesPage.services.title">
                         Scegli la soluzione
                         più adatta a te.
                     </h2>
@@ -221,53 +231,48 @@
 
             <div class="services-grid">
 
-                <!-- SERVIZIO 01 -->
-
-<a
-    href="../transfer-privati/"
-    class="service-card"
->
+                <a
+                    href="../transfer-privati/"
+                    class="service-card"
+                >
 
                     <span class="service-number">
                         01
                     </span>
 
-                    <h3>
+                    <h3 data-i18n="servicesPage.private.title">
                         Transfer privati
                     </h3>
 
-                    <p>
+                    <p data-i18n="servicesPage.private.description">
                         Spostamenti riservati e confortevoli verso
                         la tua destinazione, con un servizio
                         organizzato sulle tue necessità.
                     </p>
 
                 </a>
-                <!-- SERVIZIO 02 -->
 
-<a
-    href="../transfer-aeroportuali/"
-    class="service-card"
->
+
+                <a
+                    href="../transfer-aeroportuali/"
+                    class="service-card"
+                >
 
                     <span class="service-number">
                         02
                     </span>
 
-                    <h3>
+                    <h3 data-i18n="servicesPage.airport.title">
                         Transfer aeroportuali
                     </h3>
 
-                    <p>
+                    <p data-i18n="servicesPage.airport.description">
                         Collegamenti privati da e verso gli
                         aeroporti di Brindisi e Bari, organizzati
                         secondo i tuoi orari di viaggio.
                     </p>
 
                 </a>
-
-
-
 
             </div>
 
@@ -284,11 +289,11 @@
 
             <div class="experience-title">
 
-                <p class="eyebrow">
+                <p class="eyebrow" data-i18n="servicesPage.experience.eyebrow">
                     IL NOSTRO APPROCCIO
                 </p>
 
-                <h2>
+                <h2 data-i18n="servicesPage.experience.title">
                     Più attenzione,
                     meno pensieri.
                 </h2>
@@ -306,11 +311,11 @@
 
                     <div>
 
-                        <strong>
+                        <strong data-i18n="experience.punctuality">
                             Puntualità
                         </strong>
 
-                        <p>
+                        <p data-i18n="servicesPage.experience.punctuality.description">
                             Organizziamo ogni trasferimento
                             prestando attenzione agli orari.
                         </p>
@@ -328,11 +333,11 @@
 
                     <div>
 
-                        <strong>
+                        <strong data-i18n="experience.comfort">
                             Comfort
                         </strong>
 
-                        <p>
+                        <p data-i18n="servicesPage.experience.comfort.description">
                             Un ambiente pensato per rendere
                             piacevole anche il viaggio più lungo.
                         </p>
@@ -350,11 +355,11 @@
 
                     <div>
 
-                        <strong>
+                        <strong data-i18n="experience.professionalism">
                             Professionalità
                         </strong>
 
-                        <p>
+                        <p data-i18n="servicesPage.experience.professionalism.description">
                             Un servizio discreto e attento
                             durante ogni spostamento.
                         </p>
@@ -372,11 +377,11 @@
 
                     <div>
 
-                        <strong>
+                        <strong data-i18n="experience.flexibility">
                             Flessibilità
                         </strong>
 
-                        <p>
+                        <p data-i18n="servicesPage.experience.flexibility.description">
                             Soluzioni organizzate in base alle
                             esigenze del tuo viaggio.
                         </p>
@@ -400,13 +405,12 @@
 
             <div>
 
-                <p class="eyebrow">
+                <p class="eyebrow" data-i18n="servicesPage.territory.eyebrow">
                     SALENTO &amp; PUGLIA
                 </p>
 
-                <h2>
+                <h2 data-i18n="servicesPage.territory.title">
                     La tua destinazione.
-                    <br>
                     Il nostro percorso.
                 </h2>
 
@@ -415,7 +419,7 @@
 
             <div>
 
-                <p>
+                <p data-i18n="servicesPage.territory.description">
                     Dal Salento alle principali destinazioni
                     della Puglia, il nostro servizio è pensato
                     per accompagnarti dove desideri arrivare,
@@ -435,15 +439,15 @@
 
         <div class="container final-cta-content">
 
-            <p class="eyebrow">
+            <p class="eyebrow" data-i18n="cta.eyebrow">
                 SALENTO EXECUTIVE NCC
             </p>
 
-            <h2>
+            <h2 data-i18n="servicesPage.cta.title">
                 Hai già una destinazione?
             </h2>
 
-            <p>
+            <p data-i18n="servicesPage.cta.description">
                 Raccontaci dove vuoi andare e organizziamo
                 il tuo trasferimento.
             </p>
@@ -451,6 +455,7 @@
             <a
                 href="../prenota/"
                 class="button button-dark"
+                data-i18n="cta.book"
             >
                 Richiedi una prenotazione
             </a>
@@ -474,7 +479,7 @@
                 Salento Executive NCC
             </a>
 
-            <p>
+            <p data-i18n="footer.description">
                 Servizio di noleggio con conducente
                 nel Salento.
             </p>
@@ -484,57 +489,57 @@
 
         <div class="footer-column">
 
-            <h3>
+            <h3 data-i18n="footer.navigation">
                 Navigazione
             </h3>
 
-            <a href="../servizi/">
+            <a href="../servizi/" data-i18n="nav.services">
                 Servizi
             </a>
 
-            <a href="../trasferimenti/">
+            <a href="../trasferimenti/" data-i18n="nav.transfers">
                 Trasferimenti
             </a>
 
-            <a href="../chi-siamo/">
+            <a href="../chi-siamo/" data-i18n="nav.about">
                 Chi siamo
             </a>
 
-            <a href="../contatti/">
+            <a href="../contatti/" data-i18n="nav.contact">
                 Contatti
             </a>
 
         </div>
 
 
-   <div class="footer-column">
+        <div class="footer-column">
 
-    <h3>
-        Informazioni
-    </h3>
+            <h3 data-i18n="footer.information">
+                Informazioni
+            </h3>
 
-    <a href="../privacy/">
-        Privacy
-    </a>
+            <a href="../privacy/" data-i18n="footer.privacy">
+                Privacy
+            </a>
 
-    <a href="../termini/">
-        Termini e condizioni
-    </a>
+            <a href="../termini/" data-i18n="footer.terms">
+                Termini e condizioni
+            </a>
 
-    <a href="../tariffe/">
-        Tariffe
-    </a>
+            <a href="../tariffe/" data-i18n="footer.rates">
+                Tariffe
+            </a>
 
-</div>
+        </div>
 
 
         <div class="footer-column">
 
-            <h3>
+            <h3 data-i18n="footer.booking">
                 Prenotazioni
             </h3>
 
-            <a href="../prenota/">
+            <a href="../prenota/" data-i18n="footer.request">
                 Richiedi una prenotazione
             </a>
 
@@ -543,52 +548,54 @@
     </div>
 
 
-</div> <!-- chiude footer-grid -->
+    <div class="footer-social">
+
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="../instagram.svg" alt="Instagram">
+        </a>
+
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+            <img src="../facebook.svg" alt="Facebook">
+        </a>
+
+        <a href="#" target="_blank" rel="noopener" aria-label="TikTok">
+            <img src="../tiktok.svg" alt="TikTok">
+        </a>
+
+    </div>
 
 
-<div class="footer-social">
+    <div class="container footer-bottom">
 
-    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="../instagram.svg" alt="Instagram">
-    </a>
+        <span>
+            © <span id="current-year"></span>
+            Salento Executive NCC
+        </span>
 
-    <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
-        <img src="../facebook.svg" alt="Facebook">
-    </a>
+        <span data-i18n="footer.location">
+            Salento · Puglia
+        </span>
 
-    <a href="#" target="_blank" rel="noopener" aria-label="TikTok">
-        <img src="../tiktok.svg" alt="TikTok">
-    </a>
-
-</div>
-
-
-<div class="container footer-bottom">
-
-    <span>
-        © <span id="current-year"></span>
-        Salento Executive NCC
-    </span>
-
-    <span>
-        Salento · Puglia
-    </span>
-
-</div>
-
+    </div>
 
 </footer>
-<a 
-href="https://wa.me/393200404903"
-class="whatsapp-fixed no-transition"
+
+
+<a
+    href="https://wa.me/393200404903"
+    class="whatsapp-fixed no-transition"
     target="_blank"
     rel="noopener"
     aria-label="Contattaci su WhatsApp"
+    data-i18n-aria-label="accessibility.whatsapp"
 >
     <img src="../whatsapp.svg" alt="WhatsApp">
 </a>
 
+
+<script src="../js/translations.js"></script>
 <script src="../js/main.js"></script>
 
 </body>
 </html>
+```
