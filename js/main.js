@@ -3,11 +3,6 @@
    MAIN.JS
 ===================================================== */
 
-
-/* =====================================================
-   DOM READY
-===================================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =================================================
@@ -46,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       ELEMENTI GLOBALI
+       ELEMENTI
     ================================================= */
 
     const menuButton =
@@ -66,14 +61,95 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
+       FUNZIONE: AGGIORNA ARIA MENU
+    ================================================= */
+
+    function updateMenuAccessibility() {
+
+        if (!menuButton || !navigation) {
+            return;
+        }
+
+        const languageTranslations =
+            translations[currentLanguage] || {};
+
+        const isOpen =
+            navigation.classList.contains("is-open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            isOpen
+                ? (
+                    languageTranslations[
+                        "accessibility.closeMenu"
+                    ] || "Chiudi menu"
+                )
+                : (
+                    languageTranslations[
+                        "accessibility.openMenu"
+                    ] || "Apri menu"
+                )
+        );
+    }
+
+
+    /* =================================================
+       FUNZIONE: AGGIORNA SELETTORE LINGUA
+    ================================================= */
+
+    function updateLanguageSelector(language) {
+
+        if (languageButton) {
+
+            languageButton.textContent =
+                language.toUpperCase();
+
+        }
+
+
+        document
+            .querySelectorAll("[data-lang]")
+            .forEach((button) => {
+
+                const buttonLanguage =
+                    button.getAttribute("data-lang");
+
+                const isActive =
+                    buttonLanguage === language;
+
+                button.classList.toggle(
+                    "active",
+                    isActive
+                );
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(isActive)
+                );
+
+            });
+
+    }
+
+
+    /* =================================================
        APPLICA TRADUZIONI
     ================================================= */
 
     function applyLanguage(language) {
 
-        /* Lingua valida */
+        /* ---------------------------------------------
+           CONTROLLO LINGUA
+        --------------------------------------------- */
 
-        if (!supportedLanguages.includes(language)) {
+        if (
+            !supportedLanguages.includes(language)
+        ) {
             language = "it";
         }
 
@@ -81,7 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
         currentLanguage = language;
 
 
-        /* Salva la lingua */
+        /* ---------------------------------------------
+           SALVA LINGUA
+        --------------------------------------------- */
 
         localStorage.setItem(
             "salentoExecutiveLanguage",
@@ -89,13 +167,17 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* Aggiorna attributo HTML */
+        /* ---------------------------------------------
+           HTML LANG
+        --------------------------------------------- */
 
         document.documentElement.lang =
             language;
 
 
-        /* Recupera traduzioni */
+        /* ---------------------------------------------
+           TRADUZIONI
+        --------------------------------------------- */
 
         const languageTranslations =
             translations[language];
@@ -136,7 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
         --------------------------------------------- */
 
         document
-            .querySelectorAll("[data-i18n-aria-label]")
+            .querySelectorAll(
+                "[data-i18n-aria-label]"
+            )
             .forEach((element) => {
 
                 const key =
@@ -164,7 +248,9 @@ document.addEventListener("DOMContentLoaded", () => {
         --------------------------------------------- */
 
         document
-            .querySelectorAll("[data-i18n-placeholder]")
+            .querySelectorAll(
+                "[data-i18n-placeholder]"
+            )
             .forEach((element) => {
 
                 const key =
@@ -188,76 +274,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* ---------------------------------------------
-           PULSANTE LINGUA
+           SELETTORE
         --------------------------------------------- */
 
-        if (languageButton) {
-
-            languageButton.textContent =
-                language.toUpperCase();
-
-        }
+        updateLanguageSelector(
+            language
+        );
 
 
         /* ---------------------------------------------
-           LINGUA ATTIVA
+           ACCESSIBILITÀ MENU
         --------------------------------------------- */
 
-        document
-            .querySelectorAll("[data-lang]")
-            .forEach((button) => {
-
-                const buttonLanguage =
-                    button.getAttribute(
-                        "data-lang"
-                    );
-
-                const isActive =
-                    buttonLanguage === language;
-
-
-                button.classList.toggle(
-                    "active",
-                    isActive
-                );
-
-
-                button.setAttribute(
-                    "aria-pressed",
-                    String(isActive)
-                );
-
-            });
-
-
-        /* ---------------------------------------------
-           ARIA MENU MOBILE
-        --------------------------------------------- */
-
-        if (menuButton && navigation) {
-
-            const isMenuOpen =
-                navigation.classList.contains(
-                    "is-open"
-                );
-
-
-            menuButton.setAttribute(
-                "aria-label",
-                isMenuOpen
-                    ? (
-                        languageTranslations[
-                            "accessibility.closeMenu"
-                        ] || "Chiudi menu"
-                    )
-                    : (
-                        languageTranslations[
-                            "accessibility.openMenu"
-                        ] || "Apri menu"
-                    )
-            );
-
-        }
+        updateMenuAccessibility();
 
     }
 
@@ -272,7 +301,9 @@ document.addEventListener("DOMContentLoaded", () => {
         languageMenu
     ) {
 
-        /* Apertura / chiusura */
+        /* ---------------------------------------------
+           APRI / CHIUDI
+        --------------------------------------------- */
 
         languageButton.addEventListener(
             "click",
@@ -289,7 +320,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* Selezione lingua */
+        /* ---------------------------------------------
+           CAMBIO LINGUA
+        --------------------------------------------- */
 
         languageMenu
             .querySelectorAll("[data-lang]")
@@ -344,51 +377,32 @@ document.addEventListener("DOMContentLoaded", () => {
         navigation
     ) {
 
-        /* Apertura menu */
+        /* ---------------------------------------------
+           APRI / CHIUDI MENU
+        --------------------------------------------- */
 
         menuButton.addEventListener(
             "click",
             (event) => {
 
+                event.preventDefault();
                 event.stopPropagation();
 
 
-                const isOpen =
-                    navigation.classList.toggle(
-                        "is-open"
-                    );
-
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    String(isOpen)
+                navigation.classList.toggle(
+                    "is-open"
                 );
 
 
-                const languageTranslations =
-                    translations[currentLanguage] || {};
-
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    isOpen
-                        ? (
-                            languageTranslations[
-                                "accessibility.closeMenu"
-                            ] || "Chiudi menu"
-                        )
-                        : (
-                            languageTranslations[
-                                "accessibility.openMenu"
-                            ] || "Apri menu"
-                        )
-                );
+                updateMenuAccessibility();
 
             }
         );
 
 
-        /* Chiudi menu cliccando un link */
+        /* ---------------------------------------------
+           CHIUDI QUANDO SI CLICCA UN LINK
+        --------------------------------------------- */
 
         navigation
             .querySelectorAll("a")
@@ -402,23 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             "is-open"
                         );
 
-
-                        menuButton.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-
-                        const languageTranslations =
-                            translations[currentLanguage] || {};
-
-
-                        menuButton.setAttribute(
-                            "aria-label",
-                            languageTranslations[
-                                "accessibility.openMenu"
-                            ] || "Apri menu"
-                        );
+                        updateMenuAccessibility();
 
                     }
                 );
@@ -436,7 +434,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "click",
         (event) => {
 
-            /* Chiudi selettore lingua */
+            /* -----------------------------------------
+               CHIUDI SELETTORE LINGUA
+            ----------------------------------------- */
 
             if (
                 languageSelector &&
@@ -452,7 +452,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* Chiudi menu mobile */
+            /* -----------------------------------------
+               CHIUDI MENU MOBILE
+            ----------------------------------------- */
 
             if (
                 navigation &&
@@ -465,23 +467,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "is-open"
                 );
 
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-
-                const languageTranslations =
-                    translations[currentLanguage] || {};
-
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    languageTranslations[
-                        "accessibility.openMenu"
-                    ] || "Apri menu"
-                );
+                updateMenuAccessibility();
 
             }
 
@@ -490,7 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       CHIUSURA CON ESC
+       ESC
     ================================================= */
 
     document.addEventListener(
@@ -502,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* Chiudi lingua */
+            /* Chiudi selettore */
 
             if (languageSelector) {
 
@@ -524,23 +510,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "is-open"
                 );
 
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-
-                const languageTranslations =
-                    translations[currentLanguage] || {};
-
-
-                menuButton.setAttribute(
-                    "aria-label",
-                    languageTranslations[
-                        "accessibility.openMenu"
-                    ] || "Apri menu"
-                );
+                updateMenuAccessibility();
 
             }
 
@@ -564,6 +534,89 @@ document.addEventListener("DOMContentLoaded", () => {
             new Date().getFullYear();
 
     }
+
+
+    /* =================================================
+       TRANSIZIONE TRA LE PAGINE
+    ================================================= */
+
+    document
+        .querySelectorAll("a")
+        .forEach((link) => {
+
+            /* Link esclusi */
+
+            if (
+                link.classList.contains(
+                    "no-transition"
+                )
+            ) {
+                return;
+            }
+
+
+            const url =
+                link.getAttribute("href");
+
+
+            /* -----------------------------------------
+               IGNORA LINK NON COMPATIBILI
+            ----------------------------------------- */
+
+            if (
+                !url ||
+                url.startsWith("http") ||
+                url.startsWith("#") ||
+                url.startsWith("mailto:") ||
+                url.startsWith("tel:")
+            ) {
+                return;
+            }
+
+
+            /* -----------------------------------------
+               CLICK
+            ----------------------------------------- */
+
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    /* Tasti modificatori */
+
+                    if (
+                        event.ctrlKey ||
+                        event.metaKey ||
+                        event.shiftKey ||
+                        event.altKey ||
+                        event.button !== 0
+                    ) {
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    document.body.classList.add(
+                        "page-exit"
+                    );
+
+
+                    setTimeout(
+                        () => {
+
+                            window.location.href =
+                                url;
+
+                        },
+                        300
+                    );
+
+                }
+            );
+
+        });
 
 
     /* =================================================
@@ -609,80 +662,3 @@ window.addEventListener(
 
     }
 );
-
-
-/* =====================================================
-   TRANSIZIONE TRA LE PAGINE
-===================================================== */
-
-document
-    .querySelectorAll("a")
-    .forEach((link) => {
-
-        /* Link esclusi */
-
-        if (
-            link.classList.contains(
-                "no-transition"
-            )
-        ) {
-            return;
-        }
-
-
-        const url =
-            link.getAttribute("href");
-
-
-        /* Ignora link non compatibili */
-
-        if (
-            !url ||
-            url.startsWith("http") ||
-            url.startsWith("#") ||
-            url.startsWith("mailto:") ||
-            url.startsWith("tel:")
-        ) {
-            return;
-        }
-
-
-        link.addEventListener(
-            "click",
-            function (event) {
-
-                /* Tasti modificatori */
-
-                if (
-                    event.ctrlKey ||
-                    event.metaKey ||
-                    event.shiftKey ||
-                    event.altKey ||
-                    event.button !== 0
-                ) {
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                document.body.classList.add(
-                    "page-exit"
-                );
-
-
-                setTimeout(
-                    () => {
-
-                        window.location.href =
-                            url;
-
-                    },
-                    300
-                );
-
-            }
-        );
-
-    });
