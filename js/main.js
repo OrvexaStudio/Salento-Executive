@@ -211,7 +211,75 @@ document.addEventListener("DOMContentLoaded", () => {
     applyLanguage(currentLanguage);
 
 
+/* =================================================
+   SELETTORE LINGUA
+================================================= */
 
+const languageSelector =
+    document.querySelector(".language-selector");
+
+const languageButton =
+    document.querySelector(".language-button");
+
+const languageMenu =
+    document.querySelector(".language-menu");
+
+
+if (
+    languageSelector &&
+    languageButton &&
+    languageMenu
+) {
+
+    languageButton.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        languageSelector.classList.toggle("is-open");
+
+    });
+
+
+    languageMenu
+        .querySelectorAll("[data-lang]")
+        .forEach((button) => {
+
+            button.addEventListener("click", () => {
+
+                const language =
+                    button.getAttribute("data-lang");
+
+                applyLanguage(language);
+
+                languageButton.textContent =
+                    language.toUpperCase();
+
+                languageSelector.classList.remove(
+                    "is-open"
+                );
+
+            });
+
+        });
+
+
+    document.addEventListener("click", (event) => {
+
+        if (!languageSelector.contains(event.target)) {
+
+            languageSelector.classList.remove(
+                "is-open"
+            );
+
+        }
+
+    });
+
+
+    languageButton.textContent =
+        currentLanguage.toUpperCase();
+
+}
     /* =================================================
        MOBILE MENU
     ================================================= */
