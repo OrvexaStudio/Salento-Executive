@@ -63,7 +63,7 @@ const translations = {
 
         "accessibility.openMenu": "Apri menu",
         "accessibility.closeMenu": "Chiudi menu",
-        "accessibility.whatsapp": "Contattaci su WhatsApp"
+        "accessibility.whatsapp": "Contattaci su WhatsApp",
             
         /* =====================================================
    PAGINA SERVIZI — ITALIANO
@@ -171,7 +171,7 @@ const translations = {
 
         "accessibility.openMenu": "Open menu",
         "accessibility.closeMenu": "Close menu",
-        "accessibility.whatsapp": "Contact us on WhatsApp"
+        "accessibility.whatsapp": "Contact us on WhatsApp",
 
         /* =====================================================
    PAGINA SERVIZI — ENGLISH
@@ -279,7 +279,7 @@ const translations = {
 
         "accessibility.openMenu": "Ouvrir le menu",
         "accessibility.closeMenu": "Fermer le menu",
-        "accessibility.whatsapp": "Nous contacter sur WhatsApp"
+        "accessibility.whatsapp": "Nous contacter sur WhatsApp",
 
     /* =====================================================
    PAGINA SERVIZI — FRANÇAIS
@@ -385,7 +385,7 @@ const translations = {
 
         "accessibility.openMenu": "Abrir menú",
         "accessibility.closeMenu": "Cerrar menú",
-        "accessibility.whatsapp": "Contactarnos por WhatsApp"
+        "accessibility.whatsapp": "Contactarnos por WhatsApp",
 
         /* =====================================================
    PAGINA SERVIZI — ESPAÑOL
@@ -490,7 +490,7 @@ const translations = {
 
         "accessibility.openMenu": "Menü öffnen",
         "accessibility.closeMenu": "Menü schließen",
-        "accessibility.whatsapp": "Kontakt über WhatsApp"
+        "accessibility.whatsapp": "Kontakt über WhatsApp",
 
         /* =====================================================
    PAGINA SERVIZI — DEUTSCH
